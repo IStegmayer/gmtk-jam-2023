@@ -3,11 +3,18 @@ using UnityEngine;
 
 namespace Game {
 public class Dog : MonoBehaviour {
+    [Header("Movement configs")] //
     [SerializeField] private float speed;
     [SerializeField] private float rotationSpeed;
+    [SerializeField] private float groundedGravity;
+
+    [Header("Interaction configs")] //
+    [SerializeField] private LayerMask interactableLayer;
+    [SerializeField] private float interactRange;
 
     private CharacterController controller;
     private InputManager inputManager;
+    private UIManager uiManager;
     private Transform cameraTransform;
 
     private void Awake() {
@@ -16,6 +23,7 @@ public class Dog : MonoBehaviour {
 
     private void Start() {
         inputManager = InputManager.Instance;
+        uiManager = UIManager.Instance;
         cameraTransform = Camera.main.transform;
     }
 
@@ -24,12 +32,33 @@ public class Dog : MonoBehaviour {
 
         HandleMovement(delta);
         HandleRotation(delta);
+        CheckForInteractables();
+    }
+
+    private void CheckForInteractables() {
+        Interactable interactable;
+        RaycastHit hit;
+
+        Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, interactRange, interactableLayer);
+        // TODO: inefficient
+        if (!hit.transform || !hit.transform.TryGetComponent(out interactable)) {
+            if (uiManager.IsInteractablePopUpActive()) uiManager.ToggleInteractableTextActivation(false);
+            return;
+        }
+
+        //TODO: change text of the popup here
+        // string interactableText = interactable.InteractableText;
+        // interactableUI.InteractableText.text = interactableText;
+        uiManager.ToggleInteractableTextActivation(true);
+
+        if (inputManager.InteractInput) interactable.Interact(this);
     }
 
     private void HandleMovement(float delta) {
         Vector3 movement = Vector3.zero;
         movement.x = inputManager.MovementInput.x;
         movement.z = inputManager.MovementInput.y;
+        movement.y = groundedGravity;
         controller.Move(movement * delta * speed);
     }
 
