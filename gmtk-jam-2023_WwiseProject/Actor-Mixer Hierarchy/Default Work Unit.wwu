@@ -1,6 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{FF88571B-5532-4E63-B558-756604608212}" SchemaVersion="103">
 	<AudioObjects>
-		<WorkUnit Name="Default Work Unit" ID="{FF88571B-5532-4E63-B558-756604608212}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{FF88571B-5532-4E63-B558-756604608212}" PersistMode="Standalone">
+			<ChildrenList>
+				<ActorMixer Name="AMB" ID="{26445CAB-E309-424A-9F87-767484B70395}" ShortID="274465071">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="15"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C964AD3E-9B96-465E-845D-54A23E7EEBA9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="AMB" ID="{3DB7A6EC-4B7B-43DC-867F-48D664724CC5}" WorkUnitID="{736C0302-A268-4CB9-958F-1CE5FB93E751}"/>
+						</Reference>
+					</ReferenceList>
+					<ObjectLists/>
+				</ActorMixer>
+				<ActorMixer Name="Dog" ID="{33E6B0AC-4407-4CE1-A530-6002629E1194}" ShortID="14428590">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="17"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C964AD3E-9B96-465E-845D-54A23E7EEBA9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Dog" ID="{9EF0AF37-658C-48D4-8602-A4654191B467}" WorkUnitID="{736C0302-A268-4CB9-958F-1CE5FB93E751}"/>
+						</Reference>
+					</ReferenceList>
+					<ObjectLists/>
+				</ActorMixer>
+				<ActorMixer Name="NPC" ID="{BC56E297-C08C-45B5-9864-A6AA23C14B84}" ShortID="783511329">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="14"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C964AD3E-9B96-465E-845D-54A23E7EEBA9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="NPC" ID="{708480A6-1120-4407-96DF-01D321AD9446}" WorkUnitID="{736C0302-A268-4CB9-958F-1CE5FB93E751}"/>
+						</Reference>
+					</ReferenceList>
+					<ObjectLists/>
+				</ActorMixer>
+				<ActorMixer Name="UI" ID="{2F7D6A08-F86B-4872-BFF0-7483837DD058}" ShortID="366093942">
+					<PropertyList>
+						<Property Name="Color" Type="int16" Value="19"/>
+						<Property Name="OverrideColor" Type="bool" Value="True"/>
+					</PropertyList>
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C964AD3E-9B96-465E-845D-54A23E7EEBA9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="UI" ID="{4A6A8BA2-CAEA-4D28-945E-EB1E5BF85CE1}" WorkUnitID="{736C0302-A268-4CB9-958F-1CE5FB93E751}"/>
+						</Reference>
+					</ReferenceList>
+					<ObjectLists/>
+				</ActorMixer>
+			</ChildrenList>
+		</WorkUnit>
 	</AudioObjects>
 </WwiseDocument>
