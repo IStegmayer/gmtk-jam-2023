@@ -105,8 +105,6 @@ namespace Game {
             }
         }
 
-
-
         // private void CheckForInteractables() { 
 
         //     Interactable interactable;
@@ -137,7 +135,7 @@ namespace Game {
 
             // for now just binary anim switch
             float anim_val = (Math.Abs(movement.x) < 0.1 && Math.Abs(movement.z) < 0.1)? 0 : 1;
-            Debug.Log($"Sending {anim_val} to 'walking'");
+            //Debug.Log($"Sending {anim_val} to 'walking'");
             dogAnimator.SetFloat("walking", anim_val);
         }
 
@@ -145,6 +143,7 @@ namespace Game {
             Vector3 targetDir = Vector3.zero;
             targetDir = cameraTransform.forward * inputManager.MovementInput.y;
             targetDir += cameraTransform.right * inputManager.MovementInput.x;
+            print(targetDir);
             targetDir.Normalize();
             targetDir.y = 0;
 
