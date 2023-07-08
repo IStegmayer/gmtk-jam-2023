@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class LeashScriptRev1 : MonoBehaviour
 {
-    // Start is called before the first frame update
-
     public float forceConstant;
+
+    public Material leashMaterial;
 
     public GameObject vendor;
 
@@ -43,6 +43,13 @@ public class LeashScriptRev1 : MonoBehaviour
             spawnLocation += collar.transform.position;
 
             GameObject midpoint = Instantiate(leashMidPoint);
+
+            midpoint.AddComponent<LineRenderer>();
+            LineRenderer lrHolder = midpoint.GetComponent<LineRenderer>();
+            lrHolder.SetWidth(0.1f,0.1f);
+            lrHolder.material = leashMaterial;
+
+
             midpoint.transform.position = spawnLocation;
 
             leashMidPointsList.Add(midpoint);
@@ -52,13 +59,11 @@ public class LeashScriptRev1 : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
 
         Vector3 leashLinearVector;
         Rigidbody rbHolder;
-        // Rigidbody rbHolder2;
 
         for(int i=0; i<=(numberOfLeashSegments-1); i+=1){
             
@@ -87,7 +92,6 @@ public class LeashScriptRev1 : MonoBehaviour
                 if(leashSegmentLength > (maxLeashLength/numberOfLeashSegments))
                 {
                 rbHolder = leashMidPointsList[i].GetComponent<Rigidbody>();
-                // print("2-"+leashLinearVector*leashSegmentLength);
                 rbHolder.AddForce(-forceConstant*leashLinearVector*leashSegmentLength);
 
                 }
@@ -97,26 +101,23 @@ public class LeashScriptRev1 : MonoBehaviour
         
         leashLinearVector = transform.position - leashMidPointsList[0].transform.position;
         leashSegmentLength = leashLinearVector.magnitude;
-        // print(leashSegmentLength);
 
 
         rbHolder = leashMidPointsList[0].GetComponent<Rigidbody>();
 
-        //  print("Force Added:" + leashSegmentLength + " > "+maxLeashLength/numberOfLeashSegments);
-        if(leashSegmentLength > (maxLeashLength/numberOfLeashSegments))
-        {
-            // print("Force Added");
-        }
+    
 
     }
 
     void LateUpdate()
     {
-        for(int i=0; i<=(numberOfLeashSegments-1); i+=1)
+        for(int i=1; i<=(numberOfLeashSegments-1); i+=1)
         {
-            
+            GameObject goHolder = leashMidPointsList[i];
+            LineRenderer lrHolder = goHolder.GetComponent<LineRenderer>();
+            lrHolder.SetPosition(0,goHolder.transform.position);
+            lrHolder.SetPosition(1,leashMidPointsList[i+1].transform.position);
+
         }
     }
-
-
 }
