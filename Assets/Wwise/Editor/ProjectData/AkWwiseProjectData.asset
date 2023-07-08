@@ -24,7 +24,7 @@ MonoBehaviour:
     ParentPath: Virtual Acoustics\Default Work Unit
     guid: 29b3ae72dd582046ad8b79429d027904
     GuidInternal: 
-    m_lastTime: -8585128277103156373
+    m_lastTime: -8585128579441675516
     List: []
   AuxBusWwu:
   - PhysicalPath: Master-Mixer Hierarchy\Default Work Unit.wwu
@@ -38,7 +38,7 @@ MonoBehaviour:
     ParentPath: Master-Mixer Hierarchy\Default Work Unit
     guid: 02036c7368a2b94c958f1ce5fb93e751
     GuidInternal: 
-    m_lastTime: -8585128277103221428
+    m_lastTime: -8585127957565019278
     List:
     - name: AMB
       guid: eca6b73d7b4bdc43867f48d664724cc5
@@ -74,26 +74,6 @@ MonoBehaviour:
         ObjectType: 2
         guid: 37aff09e8c65d4488602a4654191b467
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Dog
-    - name: House
-      guid: 979fe74dcbf7554780a6a9c34450ac30
-      id: 3720479411
-      PathAndIcons:
-      - ElementName: Master-Mixer Hierarchy
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 02036c7368a2b94c958f1ce5fb93e751
-      - ElementName: Master Audio Bus
-        ObjectType: 2
-        guid: d8a41415a61d2a41a17e75ca0c2149f3
-      - ElementName: Reverb
-        ObjectType: 2
-        guid: 4457ba5bf9770843a021c70cae0c209e
-      - ElementName: House
-        ObjectType: 1
-        guid: 979fe74dcbf7554780a6a9c34450ac30
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverb\House
     - name: Master Audio Bus
       guid: d8a41415a61d2a41a17e75ca0c2149f3
       id: 3803692087
@@ -142,23 +122,6 @@ MonoBehaviour:
         ObjectType: 2
         guid: a68084702011074496df01d321ad9446
       Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\NPC
-    - name: Reverb
-      guid: 4457ba5bf9770843a021c70cae0c209e
-      id: 348963605
-      PathAndIcons:
-      - ElementName: Master-Mixer Hierarchy
-        ObjectType: 5
-        guid: 00000000000000000000000000000000
-      - ElementName: Default Work Unit
-        ObjectType: 12
-        guid: 02036c7368a2b94c958f1ce5fb93e751
-      - ElementName: Master Audio Bus
-        ObjectType: 2
-        guid: d8a41415a61d2a41a17e75ca0c2149f3
-      - ElementName: Reverb
-        ObjectType: 2
-        guid: 4457ba5bf9770843a021c70cae0c209e
-      Path: Master-Mixer Hierarchy\Default Work Unit\Master Audio Bus\Reverb
     - name: UI
       guid: a28b6a4aeaca284d945eeb1e5bf85ce1
       id: 1551306167
@@ -188,7 +151,7 @@ MonoBehaviour:
     ParentPath: SoundBanks\Default Work Unit
     guid: 2f25cbebffb76045a348e76ed4a9a363
     GuidInternal: 
-    m_lastTime: -8585128277103181391
+    m_lastTime: -8585128579441705528
     List:
     - name: AudioTest
       guid: aeebcdd6f339004e932495790627abf2
@@ -216,7 +179,7 @@ MonoBehaviour:
     ParentPath: Events\Default Work Unit
     guid: 301b390706c46e4d8628163c25339d8c
     GuidInternal: 
-    m_lastTime: -8585128277103281477
+    m_lastTime: -8585128579441855561
     List: []
   RtpcWwu:
   - PhysicalPath: Game Parameters\Default Work Unit.wwu
@@ -230,8 +193,22 @@ MonoBehaviour:
     ParentPath: Game Parameters\Default Work Unit
     guid: a41dee76f7832a45a7147d7a81dee0c5
     GuidInternal: 
-    m_lastTime: -8585128277103276473
-    List: []
+    m_lastTime: -8585127957565199325
+    List:
+    - name: RTPC_Distance
+      guid: 1108c9cd6b734a48b0d7ae60466141f8
+      id: 262290038
+      PathAndIcons:
+      - ElementName: Game Parameters
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: a41dee76f7832a45a7147d7a81dee0c5
+      - ElementName: RTPC_Distance
+        ObjectType: 13
+        guid: 1108c9cd6b734a48b0d7ae60466141f8
+      Path: Game Parameters\Default Work Unit\RTPC_Distance
   StateWwu:
   - PhysicalPath: States\Default Work Unit.wwu
     PathAndIcons:
@@ -244,8 +221,172 @@ MonoBehaviour:
     ParentPath: States\Default Work Unit
     guid: ddd06005f338cc4b860bf9a0feac55d8
     GuidInternal: 
-    m_lastTime: -8585128277103171380
-    List: []
+    m_lastTime: -8585127957564939258
+    List:
+    - name: GameState
+      guid: b06c194adf89594585d1014f63c2496c
+      id: 4091656514
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: ddd06005f338cc4b860bf9a0feac55d8
+      - ElementName: GameState
+        ObjectType: 9
+        guid: b06c194adf89594585d1014f63c2496c
+      Path: States\Default Work Unit\GameState
+      values:
+      - name: End
+        guid: fe120012193c544cb28f9ac261de7bd9
+        id: 529726532
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: ddd06005f338cc4b860bf9a0feac55d8
+        - ElementName: GameState
+          ObjectType: 9
+          guid: b06c194adf89594585d1014f63c2496c
+        - ElementName: End
+          ObjectType: 8
+          guid: fe120012193c544cb28f9ac261de7bd9
+      - name: GameOver
+        guid: 5bf1bc15834a9841b8d331c74a092618
+        id: 4158285989
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: ddd06005f338cc4b860bf9a0feac55d8
+        - ElementName: GameState
+          ObjectType: 9
+          guid: b06c194adf89594585d1014f63c2496c
+        - ElementName: GameOver
+          ObjectType: 8
+          guid: 5bf1bc15834a9841b8d331c74a092618
+      - name: InGame
+        guid: 5fd3df124c6b204a84d3b30241c836b9
+        id: 984691642
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: ddd06005f338cc4b860bf9a0feac55d8
+        - ElementName: GameState
+          ObjectType: 9
+          guid: b06c194adf89594585d1014f63c2496c
+        - ElementName: InGame
+          ObjectType: 8
+          guid: 5fd3df124c6b204a84d3b30241c836b9
+      - name: MainMenu
+        guid: e97ad29e9a9e324e84ca47e8f13cc958
+        id: 3604647259
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: ddd06005f338cc4b860bf9a0feac55d8
+        - ElementName: GameState
+          ObjectType: 9
+          guid: b06c194adf89594585d1014f63c2496c
+        - ElementName: MainMenu
+          ObjectType: 8
+          guid: e97ad29e9a9e324e84ca47e8f13cc958
+      - name: None
+        guid: 07b922e7ee9d3d43aba84a7797965275
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: ddd06005f338cc4b860bf9a0feac55d8
+        - ElementName: GameState
+          ObjectType: 9
+          guid: b06c194adf89594585d1014f63c2496c
+        - ElementName: None
+          ObjectType: 8
+          guid: 07b922e7ee9d3d43aba84a7797965275
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
+    - name: Position
+      guid: 0a63033744c3e94590dc619b9e43abbd
+      id: 1578750580
+      PathAndIcons:
+      - ElementName: States
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: ddd06005f338cc4b860bf9a0feac55d8
+      - ElementName: Position
+        ObjectType: 9
+        guid: 0a63033744c3e94590dc619b9e43abbd
+      Path: States\Default Work Unit\Position
+      values:
+      - name: Inside
+        guid: 2898b1f84d057648a35a8539daa08fea
+        id: 3553349781
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: ddd06005f338cc4b860bf9a0feac55d8
+        - ElementName: Position
+          ObjectType: 9
+          guid: 0a63033744c3e94590dc619b9e43abbd
+        - ElementName: Inside
+          ObjectType: 8
+          guid: 2898b1f84d057648a35a8539daa08fea
+      - name: None
+        guid: 2caeac58617cd44c895f129542b6e1a0
+        id: 748895195
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: ddd06005f338cc4b860bf9a0feac55d8
+        - ElementName: Position
+          ObjectType: 9
+          guid: 0a63033744c3e94590dc619b9e43abbd
+        - ElementName: None
+          ObjectType: 8
+          guid: 2caeac58617cd44c895f129542b6e1a0
+      - name: Outside
+        guid: 87ba6997dba4474b9401e24c4dc6d3c2
+        id: 438105790
+        PathAndIcons:
+        - ElementName: States
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: ddd06005f338cc4b860bf9a0feac55d8
+        - ElementName: Position
+          ObjectType: 9
+          guid: 0a63033744c3e94590dc619b9e43abbd
+        - ElementName: Outside
+          ObjectType: 8
+          guid: 87ba6997dba4474b9401e24c4dc6d3c2
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   SwitchWwu:
   - PhysicalPath: Switches\Default Work Unit.wwu
     PathAndIcons:
@@ -258,8 +399,122 @@ MonoBehaviour:
     ParentPath: Switches\Default Work Unit
     guid: 9c2d296f01232d438e2b8f9a888166d4
     GuidInternal: 
-    m_lastTime: -8585128277103166381
-    List: []
+    m_lastTime: -8585127957564849249
+    List:
+    - name: GroundMaterial
+      guid: 8b1635f69bfebd48a8ed91eea04bdde5
+      id: 3072116243
+      PathAndIcons:
+      - ElementName: Switches
+        ObjectType: 5
+        guid: 00000000000000000000000000000000
+      - ElementName: Default Work Unit
+        ObjectType: 12
+        guid: 9c2d296f01232d438e2b8f9a888166d4
+      - ElementName: GroundMaterial
+        ObjectType: 11
+        guid: 8b1635f69bfebd48a8ed91eea04bdde5
+      Path: Switches\Default Work Unit\GroundMaterial
+      values:
+      - name: Carpet
+        guid: 4dedcfac4e245246befee9b578e46690
+        id: 2412606308
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 9c2d296f01232d438e2b8f9a888166d4
+        - ElementName: GroundMaterial
+          ObjectType: 11
+          guid: 8b1635f69bfebd48a8ed91eea04bdde5
+        - ElementName: Carpet
+          ObjectType: 10
+          guid: 4dedcfac4e245246befee9b578e46690
+      - name: Concrete
+        guid: 8b409950b86cca468388a8d8d771d9cf
+        id: 841620460
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 9c2d296f01232d438e2b8f9a888166d4
+        - ElementName: GroundMaterial
+          ObjectType: 11
+          guid: 8b1635f69bfebd48a8ed91eea04bdde5
+        - ElementName: Concrete
+          ObjectType: 10
+          guid: 8b409950b86cca468388a8d8d771d9cf
+      - name: Dirt
+        guid: 5cd1e4bfa597ea4ab935d5c677e4f56c
+        id: 2195636714
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 9c2d296f01232d438e2b8f9a888166d4
+        - ElementName: GroundMaterial
+          ObjectType: 11
+          guid: 8b1635f69bfebd48a8ed91eea04bdde5
+        - ElementName: Dirt
+          ObjectType: 10
+          guid: 5cd1e4bfa597ea4ab935d5c677e4f56c
+      - name: Grass
+        guid: 70d0dfccfacff445959c958985562434
+        id: 4248645337
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 9c2d296f01232d438e2b8f9a888166d4
+        - ElementName: GroundMaterial
+          ObjectType: 11
+          guid: 8b1635f69bfebd48a8ed91eea04bdde5
+        - ElementName: Grass
+          ObjectType: 10
+          guid: 70d0dfccfacff445959c958985562434
+      - name: Parquet
+        guid: c53669b0297fbe44866bcd3b504ce1c0
+        id: 1791601991
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 9c2d296f01232d438e2b8f9a888166d4
+        - ElementName: GroundMaterial
+          ObjectType: 11
+          guid: 8b1635f69bfebd48a8ed91eea04bdde5
+        - ElementName: Parquet
+          ObjectType: 10
+          guid: c53669b0297fbe44866bcd3b504ce1c0
+      - name: Stone
+        guid: a56cc1cd0d0aad4d87dfa6be33a150c8
+        id: 1216965916
+        PathAndIcons:
+        - ElementName: Switches
+          ObjectType: 5
+          guid: 00000000000000000000000000000000
+        - ElementName: Default Work Unit
+          ObjectType: 12
+          guid: 9c2d296f01232d438e2b8f9a888166d4
+        - ElementName: GroundMaterial
+          ObjectType: 11
+          guid: 8b1635f69bfebd48a8ed91eea04bdde5
+        - ElementName: Stone
+          ObjectType: 10
+          guid: a56cc1cd0d0aad4d87dfa6be33a150c8
+      ValueGuids: []
+      ValueIcons: []
+      valuesInternal: []
   TriggerWwu:
   - PhysicalPath: Triggers\Default Work Unit.wwu
     PathAndIcons:
@@ -272,7 +527,7 @@ MonoBehaviour:
     ParentPath: Triggers\Default Work Unit
     guid: 4f6ffb0e701e5e4faa19f761015ea7a1
     GuidInternal: 
-    m_lastTime: -8585128277103156373
+    m_lastTime: -8585128579441685523
     List: []
   ExpandedFileSystemItemIds: 
   ExpandedWaapiItemIds: 
