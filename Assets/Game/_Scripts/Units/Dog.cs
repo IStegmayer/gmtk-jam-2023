@@ -17,8 +17,16 @@ public class Dog : MonoBehaviour {
     private UIManager uiManager;
     private Transform cameraTransform;
 
+    private GameObject ColliderSensorChild;
+    private MeshCollider ColliderSensor;
+    private GameObject InspectedInteractable;
+
     private void Awake() {
         controller = GetComponent<CharacterController>();
+
+        ColliderSensorChild = this.gameObject.transform.GetChild(0).gameObject;
+        ColliderSensor = ColliderSensorChild.GetComponent<MeshCollider>();
+
     }
 
     private void Start() {
@@ -32,10 +40,68 @@ public class Dog : MonoBehaviour {
 
         HandleMovement(delta);
         HandleRotation(delta);
-        CheckForInteractables();
+        interactionChecker();
+        // CheckForInteractables(); -> Replaced with "OnTriggerEnter()"
     }
 
-    private void CheckForInteractables() {
+    private void interactionChecker()
+    {
+
+        if (inputManager.InteractInput)
+        {
+            if(InspectedInteractable != null)
+            {
+                
+                print("Activet attempt");
+                // interactable.Interact(this);
+
+                if(InspectedInteractable.TryGetComponent<Interactable>(out Interactable interHolder))
+                {
+                    interHolder.Interact(this);
+                }
+            }
+        };
+
+    }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+
+        if(other.gameObject.layer == 6) //Checks to see if layer is interactable
+        {
+            InspectedInteractable = other.gameObject;
+
+            if (!uiManager.IsInteractablePopUpActive())
+            {
+
+                // if (InspectedInteractable.TryGetComponent<>(out interactable))
+                
+
+                Interactable interHolder = other.gameObject.GetComponent<Interactable>();
+                uiManager.changeinteractablePopUpContainerText(interHolder.InteractableText);
+                uiManager.ToggleInteractableTextActivation(true);
+            }
+        }
+
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if(other.gameObject == InspectedInteractable) //Checks to see if layer is interactable
+        {
+            print(other.gameObject.name);
+            if (uiManager.IsInteractablePopUpActive())
+            {
+                uiManager.ToggleInteractableTextActivation(false); 
+                InspectedInteractable = null;        
+            }
+        }
+    }
+
+
+
+    private void CheckForInteractables() { 
+
         Interactable interactable;
         RaycastHit hit;
 
