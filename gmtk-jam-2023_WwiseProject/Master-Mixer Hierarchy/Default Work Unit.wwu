@@ -45,17 +45,6 @@
 							</PropertyList>
 							<ObjectLists/>
 						</Bus>
-						<Bus Name="Reverb" ID="{5BBA5744-77F9-4308-A021-C70CAE0C209E}">
-							<PropertyList>
-								<Property Name="OverrideColor" Type="bool" Value="True"/>
-							</PropertyList>
-							<ChildrenList>
-								<AuxBus Name="House" ID="{4DE79F97-F7CB-4755-80A6-A9C34450AC30}">
-									<ObjectLists/>
-								</AuxBus>
-							</ChildrenList>
-							<ObjectLists/>
-						</Bus>
 					</ChildrenList>
 					<ObjectLists/>
 				</Bus>

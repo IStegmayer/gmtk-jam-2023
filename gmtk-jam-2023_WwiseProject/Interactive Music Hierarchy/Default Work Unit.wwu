@@ -1,6 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{CA922E9F-8CD6-4F7C-9989-095D3F10C4C5}" SchemaVersion="103">
 	<InteractiveMusic>
-		<WorkUnit Name="Default Work Unit" ID="{CA922E9F-8CD6-4F7C-9989-095D3F10C4C5}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{CA922E9F-8CD6-4F7C-9989-095D3F10C4C5}" PersistMode="Standalone">
+			<ChildrenList>
+				<MusicSwitchContainer Name="MUSIC_GameStateSwitch" ID="{CED2E89B-07F9-46D9-9E94-C55128A6B5FB}" ShortID="545615675">
+					<ReferenceList>
+						<Reference Name="Conversion">
+							<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C964AD3E-9B96-465E-845D-54A23E7EEBA9}"/>
+						</Reference>
+						<Reference Name="OutputBus">
+							<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{736C0302-A268-4CB9-958F-1CE5FB93E751}"/>
+						</Reference>
+					</ReferenceList>
+					<ChildrenList>
+						<MusicSegment Name="MUSIC_Menu" ID="{9DB2D38F-E14C-4522-A3D1-6C9D7D2B0D4B}" ShortID="871989978">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C964AD3E-9B96-465E-845D-54A23E7EEBA9}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{736C0302-A268-4CB9-958F-1CE5FB93E751}"/>
+								</Reference>
+							</ReferenceList>
+							<ObjectLists>
+								<ObjectList Name="Cues">
+									<Reference>
+										<Local>
+											<MusicCue Name="Entry Cue" ID="{53D90739-112F-419E-94C1-A999BFA2FC1A}"/>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<MusicCue Name="Exit Cue" ID="{3880BCCE-46A9-43D0-821B-346C6E120F4D}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="1"/>
+													<Property Name="TimeMs" Type="Real64" Value="1000"/>
+												</PropertyList>
+											</MusicCue>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</MusicSegment>
+						<MusicSegment Name="MUSIC_InGame" ID="{DEDF6B1E-112F-4FB9-900C-F5B62E04A6C3}" ShortID="240281492">
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C964AD3E-9B96-465E-845D-54A23E7EEBA9}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{736C0302-A268-4CB9-958F-1CE5FB93E751}"/>
+								</Reference>
+							</ReferenceList>
+							<ObjectLists>
+								<ObjectList Name="Cues">
+									<Reference>
+										<Local>
+											<MusicCue Name="Entry Cue" ID="{AE456D17-F625-471A-A84E-B47658E536E5}"/>
+										</Local>
+									</Reference>
+									<Reference>
+										<Local>
+											<MusicCue Name="Exit Cue" ID="{A750F02B-3433-45A7-843E-F06A7A3AEF3D}">
+												<PropertyList>
+													<Property Name="CueType" Type="int16" Value="1"/>
+													<Property Name="TimeMs" Type="Real64" Value="1000"/>
+												</PropertyList>
+											</MusicCue>
+										</Local>
+									</Reference>
+								</ObjectList>
+							</ObjectLists>
+						</MusicSegment>
+					</ChildrenList>
+					<StateInfo>
+						<StateGroupList>
+							<StateGroupInfo>
+								<StateGroupRef Name="GameState" ID="{4A196CB0-89DF-4559-85D1-014F63C2496C}"/>
+							</StateGroupInfo>
+						</StateGroupList>
+						<CustomStateList>
+							<CustomState>
+								<StateRef Name="GameOver" ID="{15BCF15B-4A83-4198-B8D3-31C74A092618}"/>
+								<CustomState Name="" ID="{C2C1806A-4988-4D54-979A-E6129380A0FD}" ShortID="965156718"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="InGame" ID="{12DFD35F-6B4C-4A20-84D3-B30241C836B9}"/>
+								<CustomState Name="" ID="{54253BD1-A497-4058-8FCA-D648473346A4}" ShortID="885586077"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="End" ID="{120012FE-3C19-4C54-B28F-9AC261DE7BD9}"/>
+								<CustomState Name="" ID="{E08128E1-B0CF-4648-9DDB-B29C4D092E98}" ShortID="141407400"/>
+							</CustomState>
+							<CustomState>
+								<StateRef Name="MainMenu" ID="{9ED27AE9-9E9A-4E32-84CA-47E8F13CC958}"/>
+								<CustomState Name="" ID="{0F83C89D-0689-444F-A26E-5722A6DB4FA8}" ShortID="777724000"/>
+							</CustomState>
+						</CustomStateList>
+					</StateInfo>
+					<TransitionList>
+						<MusicTransition Name="Root" ID="{6D44DC74-83B9-45A9-B4BB-50374EB3C0CA}">
+							<PropertyList>
+								<Property Name="IsFolder" Type="bool" Value="True"/>
+							</PropertyList>
+							<ChildrenList>
+								<MusicTransition Name="Transition" ID="{31ABCC52-C2DE-4EF8-9D63-3918CB36E732}">
+									<TransitionInfo/>
+								</MusicTransition>
+								<MusicTransition Name="Transition" ID="{B7B71F90-6DE8-4532-AB23-542AF9FF077E}">
+									<PropertyList>
+										<Property Name="DestinationContextType" Type="int16" Value="2"/>
+										<Property Name="SourceContextType" Type="int16" Value="2"/>
+									</PropertyList>
+									<ReferenceList>
+										<Reference Name="DestinationContextObject">
+											<ObjectRef Name="MUSIC_InGame" ID="{DEDF6B1E-112F-4FB9-900C-F5B62E04A6C3}" WorkUnitID="{CA922E9F-8CD6-4F7C-9989-095D3F10C4C5}"/>
+										</Reference>
+										<Reference Name="SourceContextObject">
+											<ObjectRef Name="MUSIC_Menu" ID="{9DB2D38F-E14C-4522-A3D1-6C9D7D2B0D4B}" WorkUnitID="{CA922E9F-8CD6-4F7C-9989-095D3F10C4C5}"/>
+										</Reference>
+									</ReferenceList>
+									<TransitionInfo/>
+								</MusicTransition>
+							</ChildrenList>
+							<TransitionInfo/>
+						</MusicTransition>
+					</TransitionList>
+					<ObjectLists/>
+					<ArgumentList>
+						<ArgumentRef Name="GameState" ID="{4A196CB0-89DF-4559-85D1-014F63C2496C}"/>
+					</ArgumentList>
+					<EntryList>
+						<Entry>
+							<Path>
+								<PathElementRef Name="MainMenu" ID="{9ED27AE9-9E9A-4E32-84CA-47E8F13CC958}"/>
+							</Path>
+							<AudioNodeInfo>
+								<AudioNodeRef Name="MUSIC_Menu" ID="{9DB2D38F-E14C-4522-A3D1-6C9D7D2B0D4B}" WorkUnitID="{CA922E9F-8CD6-4F7C-9989-095D3F10C4C5}" Platform="Linked"/>
+							</AudioNodeInfo>
+						</Entry>
+						<Entry>
+							<Path>
+								<PathElementRef Name="InGame" ID="{12DFD35F-6B4C-4A20-84D3-B30241C836B9}"/>
+							</Path>
+							<AudioNodeInfo>
+								<AudioNodeRef Name="MUSIC_InGame" ID="{DEDF6B1E-112F-4FB9-900C-F5B62E04A6C3}" WorkUnitID="{CA922E9F-8CD6-4F7C-9989-095D3F10C4C5}" Platform="Linked"/>
+							</AudioNodeInfo>
+						</Entry>
+					</EntryList>
+				</MusicSwitchContainer>
+			</ChildrenList>
+		</WorkUnit>
 	</InteractiveMusic>
 </WwiseDocument>
