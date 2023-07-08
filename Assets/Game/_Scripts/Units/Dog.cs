@@ -105,8 +105,6 @@ namespace Game {
             }
         }
 
-
-
         // private void CheckForInteractables() { 
 
         //     Interactable interactable;
