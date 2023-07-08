@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8746784734944727101}
   - component: {fileID: 8746784734944727090}
   - component: {fileID: 8746784734944727089}
+  - component: {fileID: 1051026754192157723}
   m_Layer: 6
   m_Name: InteractableObject_Ball
   m_TagString: Untagged
@@ -100,3 +101,16 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1051026754192157723
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8746784734944727100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1734bf450a7f428439beeb48752ea6dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractableText: Pickup ball?

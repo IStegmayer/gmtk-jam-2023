@@ -20,6 +20,9 @@ public class Dog : MonoBehaviour {
     private GameObject ColliderSensorChild;
     private MeshCollider ColliderSensor;
     private GameObject InspectedInteractable;
+    
+    public Interactable scriptOfHeldObject = null; 
+    public bool DogIsHoldingSomething = false;
 
     private void Awake() {
         controller = GetComponent<CharacterController>();
@@ -41,23 +44,27 @@ public class Dog : MonoBehaviour {
         HandleMovement(delta);
         HandleRotation(delta);
         interactionChecker();
-        // CheckForInteractables(); -> Replaced with "OnTriggerEnter()"
+
     }
 
     private void interactionChecker()
     {
-
         if (inputManager.InteractInput)
         {
+            if(DogIsHoldingSomething)
+            {
+                scriptOfHeldObject.Interact(this);
+            }
             if(InspectedInteractable != null)
             {
-                
-                print("Activet attempt");
-                // interactable.Interact(this);
-
                 if(InspectedInteractable.TryGetComponent<Interactable>(out Interactable interHolder))
                 {
                     interHolder.Interact(this);
+                    if (uiManager.IsInteractablePopUpActive())
+                    {
+                        uiManager.ToggleInteractableTextActivation(false); 
+                        InspectedInteractable = null;        
+                    }
                 }
             }
         };
@@ -67,22 +74,20 @@ public class Dog : MonoBehaviour {
     private void OnTriggerEnter(Collider other) 
     {
 
-        if(other.gameObject.layer == 6) //Checks to see if layer is interactable
+        if(!DogIsHoldingSomething)
         {
-            InspectedInteractable = other.gameObject;
-
-            if (!uiManager.IsInteractablePopUpActive())
+            if(other.gameObject.layer == 6) //Checks to see if layer is interactable
             {
+                InspectedInteractable = other.gameObject;
 
-                // if (InspectedInteractable.TryGetComponent<>(out interactable))
-                
-
-                Interactable interHolder = other.gameObject.GetComponent<Interactable>();
-                uiManager.changeinteractablePopUpContainerText(interHolder.InteractableText);
-                uiManager.ToggleInteractableTextActivation(true);
+                if (!uiManager.IsInteractablePopUpActive())
+                {
+                    Interactable interHolder = other.gameObject.GetComponent<Interactable>();
+                    uiManager.changeinteractablePopUpContainerText(interHolder.InteractableText);
+                    uiManager.ToggleInteractableTextActivation(true);
+                }
             }
         }
-
     }
 
     private void OnTriggerExit(Collider other)
@@ -100,25 +105,25 @@ public class Dog : MonoBehaviour {
 
 
 
-    private void CheckForInteractables() { 
+    // private void CheckForInteractables() { 
 
-        Interactable interactable;
-        RaycastHit hit;
+    //     Interactable interactable;
+    //     RaycastHit hit;
 
-        Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, interactRange, interactableLayer);
-        // TODO: inefficient
-        if (!hit.transform || !hit.transform.TryGetComponent(out interactable)) {
-            if (uiManager.IsInteractablePopUpActive()) uiManager.ToggleInteractableTextActivation(false);
-            return;
-        }
+    //     Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, interactRange, interactableLayer);
+    //     // TODO: inefficient
+    //     if (!hit.transform || !hit.transform.TryGetComponent(out interactable)) {
+    //         if (uiManager.IsInteractablePopUpActive()) uiManager.ToggleInteractableTextActivation(false);
+    //         return;
+    //     }
 
-        //TODO: change text of the popup here
-        // string interactableText = interactable.InteractableText;
-        // interactableUI.InteractableText.text = interactableText;
-        uiManager.ToggleInteractableTextActivation(true);
+    //     //TODO: change text of the popup here
+    //     // string interactableText = interactable.InteractableText;
+    //     // interactableUI.InteractableText.text = interactableText;
+    //     uiManager.ToggleInteractableTextActivation(true);
 
-        if (inputManager.InteractInput) interactable.Interact(this);
-    }
+    //     if (inputManager.InteractInput) interactable.Interact(this);
+    // }
 
     private void HandleMovement(float delta) {
         Vector3 movement = Vector3.zero;
