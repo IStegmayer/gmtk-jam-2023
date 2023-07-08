@@ -1,6 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <WwiseDocument Type="WorkUnit" ID="{0560D0DD-38F3-4BCC-860B-F9A0FEAC55D8}" SchemaVersion="103">
 	<States>
-		<WorkUnit Name="Default Work Unit" ID="{0560D0DD-38F3-4BCC-860B-F9A0FEAC55D8}" PersistMode="Standalone"/>
+		<WorkUnit Name="Default Work Unit" ID="{0560D0DD-38F3-4BCC-860B-F9A0FEAC55D8}" PersistMode="Standalone">
+			<ChildrenList>
+				<StateGroup Name="GameState" ID="{4A196CB0-89DF-4559-85D1-014F63C2496C}">
+					<ChildrenList>
+						<State Name="None" ID="{E722B907-9DEE-433D-ABA8-4A7797965275}"/>
+						<State Name="MainMenu" ID="{9ED27AE9-9E9A-4E32-84CA-47E8F13CC958}"/>
+						<State Name="InGame" ID="{12DFD35F-6B4C-4A20-84D3-B30241C836B9}"/>
+						<State Name="GameOver" ID="{15BCF15B-4A83-4198-B8D3-31C74A092618}"/>
+						<State Name="End" ID="{120012FE-3C19-4C54-B28F-9AC261DE7BD9}"/>
+					</ChildrenList>
+				</StateGroup>
+				<StateGroup Name="Position" ID="{3703630A-C344-45E9-90DC-619B9E43ABBD}">
+					<ChildrenList>
+						<State Name="None" ID="{58ACAE2C-7C61-4CD4-895F-129542B6E1A0}"/>
+						<State Name="Inside" ID="{F8B19828-054D-4876-A35A-8539DAA08FEA}"/>
+						<State Name="Outside" ID="{9769BA87-A4DB-4B47-9401-E24C4DC6D3C2}"/>
+					</ChildrenList>
+				</StateGroup>
+			</ChildrenList>
+		</WorkUnit>
 	</States>
 </WwiseDocument>
