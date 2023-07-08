@@ -145,6 +145,7 @@ namespace Game {
             Vector3 targetDir = Vector3.zero;
             targetDir = cameraTransform.forward * inputManager.MovementInput.y;
             targetDir += cameraTransform.right * inputManager.MovementInput.x;
+            print(targetDir);
             targetDir.Normalize();
             targetDir.y = 0;
 

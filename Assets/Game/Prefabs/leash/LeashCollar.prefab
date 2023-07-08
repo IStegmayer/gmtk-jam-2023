@@ -47,12 +47,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceConstant: 50
+  leashMaterial: {fileID: 2100000, guid: 4344da2f1ca4dde459600017908cd728, type: 2}
   vendor: {fileID: 0}
   collar: {fileID: 0}
   leashMidPoint: {fileID: 714717597306194958, guid: 2d29638372cf6b943bc61706014df133,
     type: 3}
   maxLeashLength: 5
-  numberOfLeashSegments: 10
+  numberOfLeashSegments: 5
   leashIsHeld: 0
 --- !u!54 &3675995006070897727
 Rigidbody:
