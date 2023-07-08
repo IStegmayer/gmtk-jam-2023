@@ -23,7 +23,8 @@
 				<Property Name="GenerateSoundBanks\x64_SelectedPlatforms" Type="string" Value=""/>
 				<Property Name="GenerateSoundBanks\x64_SelectedSoundBanks" Type="string" Value=""/>
 				<Property Name="HardwareController\CurrentSession" Type="string" Value="{00000000-0000-0000-0000-000000000000}"/>
-				<Property Name="Interactive Music\x64_{9DB2D38F-E14C-4522-A3D1-6C9D7D2B0D4B} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwPwAAAAAAEHBAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
+				<Property Name="Interactive Music\x64_{9BEAB48D-1F82-44B6-BAEA-90ED148D6D24} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwPwAAAAAAFHBAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
+				<Property Name="Interactive Music\x64_{9DB2D38F-E14C-4522-A3D1-6C9D7D2B0D4B} - SegmentEditorZoomInfo" Type="string" Value="mpmZmZmZuT+3ne+nxkv1PwAAAAAAEHBAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
 				<Property Name="Interactive Music\x64_{DEDF6B1E-112F-4FB9-900C-F5B62E04A6C3} - SegmentEditorZoomInfo" Type="string" Value="AAAAAAAA8D8AAAAAAADwPwAAAAAAEHBAAAAAAAAA8D8AAAAAAAAAAAAAAAAAAAAA"/>
 				<Property Name="MeterView\LastObject1" Type="string" Value="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}"/>
 				<Property Name="MeterView\MeterMode1" Type="int32" Value="1"/>
@@ -37,18 +38,20 @@
 				<Property Name="MonitoringManager\GameObjectFilter\x64_GameObjectFilters" Type="string" Value=""/>
 				<Property Name="Music Transition List\{49BB0034-F4E7-41CB-9BCE-3BED365AAB03}\Scroll Position" Type="int32" Value="0"/>
 				<Property Name="Music Transition List\{49BB0034-F4E7-41CB-9BCE-3BED365AAB03}\x64_Expand States" Type="string" Value=""/>
+				<Property Name="Music Transition List\{A9166383-B662-4E8B-B069-D217866EF7B4}\Scroll Position" Type="int32" Value="0"/>
+				<Property Name="Music Transition List\{A9166383-B662-4E8B-B069-D217866EF7B4}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="Music Transition List\{CED2E89B-07F9-46D9-9E94-C55128A6B5FB}\Scroll Position" Type="int32" Value="0"/>
 				<Property Name="Music Transition List\{CED2E89B-07F9-46D9-9E94-C55128A6B5FB}\x64_Expand States" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\FirstVisible_11_1" Type="string" Value="{4C96B38B-3DB4-40C7-91C9-665510E38993}"/>
 				<Property Name="ProjectExplorer\FirstVisible_12_1" Type="string" Value="{23EC2DE3-3ED8-4B82-AC99-92E25F2E4C6B}"/>
-				<Property Name="ProjectExplorer\FirstVisible_1_1" Type="string" Value="{4A6A8BA2-CAEA-4D28-945E-EB1E5BF85CE1}"/>
+				<Property Name="ProjectExplorer\FirstVisible_1_1" Type="string" Value="{BC56E297-C08C-45B5-9864-A6AA23C14B84}"/>
 				<Property Name="ProjectExplorer\FirstVisible_4_1" Type="string" Value="{A69BF0FC-D84A-487C-ABDD-56F71CB2A126}"/>
 				<Property Name="ProjectExplorer\FirstVisible_5_1" Type="string" Value="{CB6175F1-6080-4A23-92EF-0807E304D0C1}"/>
 				<Property Name="ProjectExplorer\FirstVisible_7_1" Type="string" Value="{C98E673F-A24C-48A8-960F-10565FFE70A0}"/>
 				<Property Name="ProjectExplorer\FirstVisible_9_1" Type="string" Value="{41093F77-829F-4D88-8601-E8B25F3D4781}"/>
 				<Property Name="ProjectExplorer\x64_Expanded_11_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_12_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\x64_Expanded_13_1" Type="string" Value=""/>
+				<Property Name="ProjectExplorer\x64_Expanded_13_1" Type="string" Value="j9OynUzhIkWj0WydfSsNS5vo0s75B9lGnpTFUSimtfufLpLK1ox8T5mJCV0/EMTFHmvf3i8RuU+QDPW2LgSmww=="/>
 				<Property Name="ProjectExplorer\x64_Expanded_14_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_15_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_16_1" Type="string" Value=""/>
@@ -59,15 +62,15 @@
 				<Property Name="ProjectExplorer\x64_Expanded_20_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_21_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_22_1" Type="string" Value=""/>
-				<Property Name="ProjectExplorer\x64_Expanded_2_1" Type="string" Value="2KQUFaYdKkGhfnXKDCFJ80RXulv5dwhDoCHHDK4MIJ5ihwWY2cIJS7FmMtp3lSo/AgNsc2iiuUyVjxzl+5PnUQ=="/>
-				<Property Name="ProjectExplorer\x64_Expanded_3_1" Type="string" Value="otJbKlceE0KTPt0wtKG6qKtcRCYJ40pCn4d2dIS3A5WX4la8jMC1RZhkpqojwUuECGp9L2v4cki/8HSDg33QWP8lB1EY5HtJrUec7nGr7gHrMU2boR+ESoPf8FxgObmg3SD4PmBE30umiRVCIp1QTkjMRpWy2TRMlgCoRGfLn6SssOYzB0ThTKUwYAJinhGUG1eI/zJVY061WHVmBGCCEg=="/>
+				<Property Name="ProjectExplorer\x64_Expanded_2_1" Type="string" Value="2KQUFaYdKkGhfnXKDCFJ82KHBZjZwglLsWYy2neVKj8CA2xzaKK5TJWPHOX7k+dR"/>
+				<Property Name="ProjectExplorer\x64_Expanded_3_1" Type="string" Value="otJbKlceE0KTPt0wtKG6qKtcRCYJ40pCn4d2dIS3A5WX4la8jMC1RZhkpqojwUuECGp9L2v4cki/8HSDg33QWP8lB1EY5HtJrUec7nGr7gHrMU2boR+ESoPf8FxgObmgQqgCySNuskugbeI9h/OkX90g+D5gRN9LpokVQiKdUE5IzEaVstk0TJYAqERny5+krLDmMwdE4UylMGACYp4RlBtXiP8yVWNOtVh1ZgRgghI="/>
 				<Property Name="ProjectExplorer\x64_Expanded_4_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_5_1" Type="string" Value="nC0pbwEjLUOOK4+aiIFm1IsWNfab/r1IqO2R7qBL3eU="/>
 				<Property Name="ProjectExplorer\x64_Expanded_6_1" Type="string" Value="sGwZSt+JWUWF0QFPY8JJbApjAzdEw+lFkNxhm55Dq73d0GAF8zjMS4YL+aD+rFXY"/>
 				<Property Name="ProjectExplorer\x64_Expanded_7_1" Type="string" Value=""/>
 				<Property Name="ProjectExplorer\x64_Expanded_8_1" Type="string" Value="pB3udveDKkWnFH16gd7gxQ=="/>
 				<Property Name="ProjectExplorer\x64_Expanded_9_1" Type="string" Value=""/>
-				<Property Name="RTPC\GameParameterSimValue\{CDC90811-736B-484A-B0D7-AE60466141F8}" Type="Real64" Value="50"/>
+				<Property Name="RTPC\GameParameterSimValue\{CDC90811-736B-484A-B0D7-AE60466141F8}" Type="Real64" Value="0"/>
 				<Property Name="SoundBank Manager\x64_Expand States" Type="string" Value=""/>
 				<Property Name="SoundBankHeaderFilePath" Type="string" Value="GeneratedSoundBanks\"/>
 				<Property Name="SoundBankPaths" Type="string">
@@ -105,8 +108,8 @@
 				<List Name="BatchRenameSettings">
 					<PluginInnerObject Name="" ID="{AE1B9904-4DC9-4829-8FBD-BBA4C4E50D84}" PluginName="BatchRenameSettings" CompanyID="0" PluginID="992">
 						<PropertyList>
-							<Property Name="ReplaceFindWhat" Type="string" Value="Dog"/>
-							<Property Name="ReplaceReplaceWith" Type="string" Value="NPC"/>
+							<Property Name="ReplaceFindWhat" Type="string" Value="Menu"/>
+							<Property Name="ReplaceReplaceWith" Type="string" Value="UI_Menu"/>
 						</PropertyList>
 					</PluginInnerObject>
 				</List>

@@ -202,7 +202,7 @@
 														</Point>
 														<Point>
 															<XPos>66.53646</XPos>
-															<YPos>-0</YPos>
+															<YPos>0</YPos>
 															<Flags>0</Flags>
 															<SegmentShape>SCurve</SegmentShape>
 														</Point>
@@ -840,7 +840,7 @@
 																</Point>
 																<Point>
 																	<XPos>66.53646</XPos>
-																	<YPos>-0</YPos>
+																	<YPos>0</YPos>
 																	<Flags>0</Flags>
 																	<SegmentShape>SCurve</SegmentShape>
 																</Point>
@@ -1037,7 +1037,7 @@
 						</Reference>
 					</ReferenceList>
 					<ChildrenList>
-						<RandomSequenceContainer Name="MenuHover" ID="{BFC5E857-C7C7-43D2-8B9C-610EFA3E7ECE}" ShortID="15251808">
+						<RandomSequenceContainer Name="UI_MenuHover" ID="{BFC5E857-C7C7-43D2-8B9C-610EFA3E7ECE}" ShortID="15251808">
 							<PropertyList>
 								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
 								<Property Name="Pitch" Type="int32">
@@ -1065,7 +1065,7 @@
 							</ReferenceList>
 							<ObjectLists/>
 						</RandomSequenceContainer>
-						<RandomSequenceContainer Name="MenuClick" ID="{7BB028E5-5459-4ECF-A110-A61011947225}" ShortID="215505502">
+						<RandomSequenceContainer Name="UI_MenuClick" ID="{7BB028E5-5459-4ECF-A110-A61011947225}" ShortID="215505502">
 							<PropertyList>
 								<Property Name="Lowpass" Type="int16">
 									<ModifierList>
@@ -1096,6 +1096,62 @@
 								</Reference>
 								<Reference Name="OutputBus">
 									<ObjectRef Name="Master Audio Bus" ID="{1514A4D8-1DA6-412A-A17E-75CA0C2149F3}" WorkUnitID="{736C0302-A268-4CB9-958F-1CE5FB93E751}"/>
+								</Reference>
+							</ReferenceList>
+							<ObjectLists/>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="UI_PauseMenu" ID="{AE615126-6333-4FC5-B072-DE8B05E8F636}" ShortID="1016301661">
+							<PropertyList>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{31EB08DA-E5DE-4C30-ADC4-FADC0784D046}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="10"/>
+													<Property Name="Min" Type="Real64" Value="-10"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C964AD3E-9B96-465E-845D-54A23E7EEBA9}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="UI" ID="{4A6A8BA2-CAEA-4D28-945E-EB1E5BF85CE1}" WorkUnitID="{736C0302-A268-4CB9-958F-1CE5FB93E751}"/>
+								</Reference>
+							</ReferenceList>
+							<ObjectLists/>
+						</RandomSequenceContainer>
+						<RandomSequenceContainer Name="UI_PauseMenu_Exit" ID="{C484EA7A-B5DA-4AE5-8E15-6D0B5B5EE453}" ShortID="1055613660">
+							<PropertyList>
+								<Property Name="NormalOrShuffle" Type="int16" Value="0"/>
+								<Property Name="Pitch" Type="int32">
+									<ModifierList>
+										<ModifierInfo>
+											<Modifier Name="" ID="{9240E710-C9CD-446E-BBCE-BB20A94530E2}">
+												<PropertyList>
+													<Property Name="Enabled" Type="bool" Value="True"/>
+													<Property Name="Max" Type="Real64" Value="10"/>
+													<Property Name="Min" Type="Real64" Value="-10"/>
+												</PropertyList>
+											</Modifier>
+										</ModifierInfo>
+									</ModifierList>
+								</Property>
+								<Property Name="RandomAvoidRepeatingCount" Type="int32" Value="5"/>
+							</PropertyList>
+							<ReferenceList>
+								<Reference Name="Conversion">
+									<ObjectRef Name="Default Conversion Settings" ID="{6D1B890C-9826-4384-BF07-C15223E9FB56}" WorkUnitID="{C964AD3E-9B96-465E-845D-54A23E7EEBA9}"/>
+								</Reference>
+								<Reference Name="OutputBus">
+									<ObjectRef Name="UI" ID="{4A6A8BA2-CAEA-4D28-945E-EB1E5BF85CE1}" WorkUnitID="{736C0302-A268-4CB9-958F-1CE5FB93E751}"/>
 								</Reference>
 							</ReferenceList>
 							<ObjectLists/>
