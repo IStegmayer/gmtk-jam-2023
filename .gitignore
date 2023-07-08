@@ -76,4 +76,3 @@ crashlytics-build.properties
 *.akd
 *.prof
 *.validationcache
-/[Aa]ssets/[Ww]wise/[Ee]ditor/[Pp]roject[Dd]ata/*
