@@ -21,7 +21,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -5410675859753560720, guid: 8e5284f4785d33e43a7ed3c6f2501a82,
+  m_Motion: {fileID: -5410675859753560720, guid: 844322a73936f234baee87d82cdf5338,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -36,7 +36,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: dog_walk
-  m_Speed: 2
+  m_Speed: 2.3
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 527952919580573207}
@@ -49,7 +49,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 4286111340735780465, guid: 8e5284f4785d33e43a7ed3c6f2501a82,
+  m_Motion: {fileID: 4286111340735780465, guid: 844322a73936f234baee87d82cdf5338,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -62,7 +62,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: UglyDogTest
+  m_Name: DogAnimator
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: walking
@@ -70,7 +70,7 @@ AnimatorController:
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 0}
+    m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
