@@ -15,8 +15,8 @@ TagManager:
   - Interactable
   - Client
   - Obstacle
-  - Obstacle_Dog_Can_Pass
-  - 
+  - Obstacle_Dog_Cannot_Pass
+  - VendorLayer
   - 
   - 
   - 
