@@ -30,6 +30,7 @@ public class LeashScriptRev1 : MonoBehaviour
     void Start()
     {
         vendorRb = vendorAttachPoint.GetComponent<Rigidbody>();
+        vendorAttachPoint.AddComponent<LineRenderer>();
 
         Vector3 leashLinearVector = collar.transform.position - vendorAttachPoint.transform.position;
 
@@ -47,14 +48,8 @@ public class LeashScriptRev1 : MonoBehaviour
             midpoint.AddComponent<LineRenderer>();
             LineRenderer lrHolder = midpoint.GetComponent<LineRenderer>();
             lrHolder.SetWidth(0.1f,0.1f);
-            // lrHolder.StartWidth(0.1f);
-            // lrHolder.EndWidth(0.1f);
-
             lrHolder.material = leashMaterial;
-
-
             midpoint.transform.position = spawnLocation;
-
             leashMidPointsList.Add(midpoint);
         }
 
@@ -114,13 +109,27 @@ public class LeashScriptRev1 : MonoBehaviour
 
     void LateUpdate()
     {
-        for(int i=1; i<=(numberOfLeashSegments-1); i+=1)
+        GameObject goHolder;
+        LineRenderer lrHolder;
+
+        for(int i=0; i<leashMidPointsList.Count-1; i+=1)
         {
-            GameObject goHolder = leashMidPointsList[i];
-            LineRenderer lrHolder = goHolder.GetComponent<LineRenderer>();
+            goHolder = leashMidPointsList[i];
+            lrHolder = goHolder.GetComponent<LineRenderer>();
             lrHolder.SetPosition(0,goHolder.transform.position);
             lrHolder.SetPosition(1,leashMidPointsList[i+1].transform.position);
 
         }
+        // goHolder = leashMidPointsList[leashMidPointsList.Count];
+        // goHolder = leashMidPointsList[0];
+
+
+        lrHolder = vendorAttachPoint.GetComponent<LineRenderer>();
+        lrHolder.SetWidth(0.1f,0.1f);
+        lrHolder.material = leashMaterial;
+        lrHolder.SetPosition(0,vendorAttachPoint.transform.position);
+        lrHolder.SetPosition(1,leashMidPointsList[1].transform.position);
+        // leashMidPointsList[leashMidPointsList.Count]
+
     }
 }

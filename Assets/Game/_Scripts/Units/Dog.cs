@@ -96,7 +96,6 @@ namespace Game {
         {
             if(other.gameObject == InspectedInteractable) //Checks to see if layer is interactable
             {
-                print(other.gameObject.name);
                 if (uiManager.IsInteractablePopUpActive())
                 {
                     uiManager.ToggleInteractableTextActivation(false); 

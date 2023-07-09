@@ -67,10 +67,7 @@ public class CameraSystemScriptRev1 : MonoBehaviour
     {
         Vector3 rotaionHolder = new Vector3(-1*pitchAngle,0,0);
         transform.eulerAngles  = rotaionHolder;
-
-        print(allObjectsToFocusOn.Count);
-
-        
+       
 
         foreach(GameObject focusObject in allObjectsToFocusOn)
         {
@@ -94,20 +91,12 @@ public class CameraSystemScriptRev1 : MonoBehaviour
             {
                 rightMostPoint = focusObject.transform.position.x;
             }
-            // print(highestPoint+"-"+lowestPoint+"-"+leftMostPoint+"-"+rightMostPoint);
         }
 
         
         Vector3 focusPoint = new Vector3(((leftMostPoint+rightMostPoint)/2),0,((highestPoint+lowestPoint)/2));
 
         Vector3 offsetVector;
-        
-        // offsetVector = new Vector3(0,Mathf.Sin(degToRad(pitchAngle))*-1*cameraDistance,Mathf.Cos(degToRad(pitchAngle))*-1*cameraDistance);
-
-        // float zOffset = (Mathf.Abs(highestPoint-lowestPoint))/Mathf.Tan(degToRad(90-pitchAngle));
-        // float yOffset = (Mathf.Abs(highestPoint-lowestPoint))/2;
-
-        // offsetVector = new Vector3(0,yOffset,zOffset);
 
         float offsetLengthZ = ((highestPoint-lowestPoint)/2)/Mathf.Tan(degToRad(20));
         float offsetLengthX = ((rightMostPoint-leftMostPoint)/2)/Mathf.Tan(degToRad(20));

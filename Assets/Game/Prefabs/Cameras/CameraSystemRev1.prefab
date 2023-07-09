@@ -164,6 +164,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dogGameObject: {fileID: 0}
+  vendorGameObject: {fileID: 0}
+  customerGameObject: {fileID: 0}
+  allObjectsToFocusOn: []
   pitchAngle: -50
-  cameraDistance: 15
+  minCameraDistance: 15
   cameraSystem: 1

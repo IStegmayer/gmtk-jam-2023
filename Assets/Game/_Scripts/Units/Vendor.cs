@@ -31,7 +31,7 @@ namespace Game {
 
         // rotationManager();
 
-        if (GameManager.Instance.CurrentGameState != GameState.Started) return;
+        // if (GameManager.Instance.CurrentGameState != GameState.Started) return;
         
         if (cookTimer >= timeToCook) {
             currentMeals++;
@@ -49,18 +49,35 @@ namespace Game {
         // I know this is repeating code but it'll do for now
         private void OnTriggerEnter(Collider other) {
 
-            print(other.gameObject.name);
+            if (other.gameObject.layer == 7) { //CLIENT layer
 
-            if (other.gameObject.layer == 7) {
-                GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
-                currentMeals--;
-                Destroy(meal);
+                if(currentMeals > 0)
+                {
+                    GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
+                    currentMeals--;
+                    Destroy(meal);
+
+                    if(other.TryGetComponent<customerScript>(out customerScript currentCustomer))
+                    {
+                        currentCustomer.recievedAHotdog();
+                    }
+                    
+                }
+                else
+                {
+                    print("No meals available to give");
+                }
                 // TODO: award points based on how long the client's been waiting
             }
-            else if (other.gameObject.layer == 8) {
-                GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
-                currentMeals--;
-                Destroy(meal);
+            else if (other.gameObject.layer == 8) { //OBSTACLE layer
+                if(currentMeals > 0)
+                {
+                    GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
+                    currentMeals--;
+                    Destroy(meal);
+                } else {
+                    cookTimer = 0;  // If there is a single hotdog in progress, that is removed when going through a bush.
+                }
             }
         }
 
