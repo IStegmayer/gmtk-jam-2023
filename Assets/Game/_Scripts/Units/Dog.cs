@@ -122,7 +122,8 @@ namespace Game {
 
         private void HandleRotation(float delta) {
             Vector3 targetDir = Vector3.zero;
-            targetDir = cameraTransform.forward * inputManager.MovementInput.y*5.882f;
+            // targetDir = cameraTransform.forward * inputManager.MovementInput.y*5.882f;
+            targetDir = cameraTransform.forward * inputManager.MovementInput.y;
             targetDir += cameraTransform.right * inputManager.MovementInput.x;
 
             print(inputManager.MovementInput.y + "y-x" + inputManager.MovementInput.x+"dir"+targetDir);

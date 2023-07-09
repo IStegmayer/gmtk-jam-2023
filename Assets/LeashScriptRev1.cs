@@ -8,7 +8,7 @@ public class LeashScriptRev1 : MonoBehaviour
 
     public Material leashMaterial;
 
-    public GameObject vendor;
+    public GameObject vendorAttachPoint;
 
     public GameObject collar;
 
@@ -29,11 +29,11 @@ public class LeashScriptRev1 : MonoBehaviour
 
     void Start()
     {
-        vendorRb = vendor.GetComponent<Rigidbody>();
+        vendorRb = vendorAttachPoint.GetComponent<Rigidbody>();
 
-        Vector3 leashLinearVector = collar.transform.position - vendor.transform.position;
+        Vector3 leashLinearVector = collar.transform.position - vendorAttachPoint.transform.position;
 
-        leashMidPointsList.Add(vendor);
+        leashMidPointsList.Add(vendorAttachPoint);
 
         for(int i=0; i<=(numberOfLeashSegments-2); i+=1)
         {
