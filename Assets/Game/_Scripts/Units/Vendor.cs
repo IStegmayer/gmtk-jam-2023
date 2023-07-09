@@ -26,7 +26,7 @@ public class Vendor : MonoBehaviour {
 
     public GameObject dogGameObject;
 
-    // public Animator vendorAnimator;
+    public Animator vendorAnimator;
     [Range(0, 1)] public float vendorDraggedFloat;
 
     private void Awake() {
@@ -59,7 +59,12 @@ public class Vendor : MonoBehaviour {
 
         rotationManager();
 
-        // vendorAnimator.SetFloat("dragged", vendorDraggedFloat);
+        Vector3 velHolder = rb.velocity;
+
+        float speedHolder = velHolder.magnitude;
+
+        vendorAnimator.SetFloat("vendorSpeed", speedHolder);
+        vendorAnimator.SetFloat("dragged", vendorDraggedFloat);
 
 
         

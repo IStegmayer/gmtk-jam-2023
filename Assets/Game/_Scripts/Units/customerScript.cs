@@ -14,6 +14,9 @@ public class CustomerScript : MonoBehaviour
     private float startTimeOfWantingHotdog;
     private float currentWaitTime;
     private float percentageOfTimeTaken;
+
+    public float MinTimeBetweenOrders = 10f;
+    private float lastHotDogRecieved = -100;
     
     private Light debugLight;
 
@@ -33,7 +36,7 @@ public class CustomerScript : MonoBehaviour
    
         updateCameraList();
 
-        requestOrder();
+        // requestOrder();
 
         normalLocation = transform.position;
     
@@ -87,16 +90,21 @@ public class CustomerScript : MonoBehaviour
 
     public void requestOrder()
     {
-        wantsAHotdog = true;
-        startTimeOfWantingHotdog = Time.time;
-        debugLight.intensity = 10;
-        updateCameraList();
+
+        if(MinTimeBetweenOrders < (Time.time - lastHotDogRecieved))
+        {
+            wantsAHotdog = true;
+            startTimeOfWantingHotdog = Time.time;
+            debugLight.intensity = 10;
+            updateCameraList();
+        }
     }
 
     public void recievedAHotdog()
     {
         wantsAHotdog = false;
         debugLight.intensity = 0;
+        lastHotDogRecieved = Time.time;
         print("YUM YUM YUM");
 
         GameObject SMHolder = GameObject.Find("ScoreManager");

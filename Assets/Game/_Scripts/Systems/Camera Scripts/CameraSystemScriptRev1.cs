@@ -107,8 +107,6 @@ public class CameraSystemScriptRev1 : MonoBehaviour
         
         Vector3 focusPoint = new Vector3(((leftMostPoint+rightMostPoint)/2),0,((highestPoint+lowestPoint)/2));
 
-        Vector3 offsetVector;
-
         float offsetLengthZ = ((highestPoint-lowestPoint)/2)/Mathf.Tan(degToRad(20));
         float offsetLengthX = ((rightMostPoint-leftMostPoint)/2)/Mathf.Tan(degToRad(30));
 
@@ -120,6 +118,7 @@ public class CameraSystemScriptRev1 : MonoBehaviour
         offsetDirection = Quaternion.AngleAxis(pitchAngle,  Vector3.left)*offsetDirection;
 
         offsetDirection.Normalize();
+
         transform.position = focusPoint + (-1 * offsetDirection * offsetLength);
 
     }

@@ -20,8 +20,8 @@ public class scoreManagerScript : MonoBehaviour
 
     public void addPoints(float timeTaken)
     {
-        float pointsHolder = pointsConstant*(Mathf.Floor(100*Mathf.Log((timeTaken/2)+1,10)));
-
+        float pointsHolder = pointsConstant*(Mathf.Floor(20*Mathf.Log((timeTaken/2)+1,10)));
+        print(pointsHolder);
         if(pointsHolder > maxPointsAtOnce)
         {
             pointsHolder = maxPointsAtOnce;
