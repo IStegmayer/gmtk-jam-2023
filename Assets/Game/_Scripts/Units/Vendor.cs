@@ -8,15 +8,15 @@ public class Vendor : MonoBehaviour {
     public float timeToCook;
 
     public int maxMeals;
-    public Slider cookProgressionBar;
     public GameObject mealPrefab;
     public Transform[] mealSpawnPoints;
     public Slider[] mealSliders;
-    public LayerMask clientLayer;
-    public LayerMask obstacleLayer;
 
     private float cookTimer;
     private int currentMeals;
+
+    public Animator vendorAnimator;
+    [Range(0, 1)] public float vendorDraggedFloat;
 
     private void Awake() {
         cookTimer = 0f;
@@ -29,7 +29,7 @@ public class Vendor : MonoBehaviour {
 
     private void Update() {
         if (GameManager.Instance.CurrentGameState != GameState.Started) return;
-        
+
         if (cookTimer >= timeToCook) {
             currentMeals++;
             Instantiate(mealPrefab, mealSpawnPoints[currentMeals - 1].position, Quaternion.identity,
@@ -41,7 +41,7 @@ public class Vendor : MonoBehaviour {
             cookTimer += Time.deltaTime;
         }
 
-        cookProgressionBar.value = cookTimer;
+        vendorAnimator.SetFloat("dragged", vendorDraggedFloat);
     }
 
     // I know this is repeating code but it'll do for now
