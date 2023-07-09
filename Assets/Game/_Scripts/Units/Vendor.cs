@@ -45,6 +45,7 @@ public class Vendor : MonoBehaviour {
             currentMeals++;
             Instantiate(mealPrefab, mealSpawnPoints[currentMeals - 1].position, Quaternion.identity,
                 mealSpawnPoints[currentMeals - 1]);
+            AudioSystem.Instance.PlayVendorSound("NPC_MealCounter_0" + currentMeals, transform.position);
             cookTimer = 0f;
         }
         else if (currentMeals < maxMeals) {
@@ -55,6 +56,7 @@ public class Vendor : MonoBehaviour {
         rotationManager();
 
         vendorAnimator.SetFloat("dragged", vendorDraggedFloat);
+        
     }
 
     private void FixedUpdate()

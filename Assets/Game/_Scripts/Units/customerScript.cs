@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = System.Random;
 
 namespace Game {
 public class customerScript : MonoBehaviour
@@ -21,6 +22,8 @@ public class customerScript : MonoBehaviour
     private bool wantsAHotdog = true;
 
     private Light debugLight;
+    
+    Random r = new Random();
 
     // Start is called before the first frame update
 
@@ -59,7 +62,8 @@ public class customerScript : MonoBehaviour
 
     public void requestOrder()
     {
-
+        int rInt = r.Next(1, 4);
+        AudioSystem.Instance.PlayCustomerSound("NPC_CustomersCommand_0" + rInt, transform.position);
         wantsAHotdog = true;
         startTimeOfWantingHotdog = Time.time;
         debugLight.intensity = 1;
@@ -70,6 +74,9 @@ public class customerScript : MonoBehaviour
     {
         wantsAHotdog = false;
         debugLight.intensity = 0;
+
+        int rInt = r.Next(1, 4);
+        AudioSystem.Instance.PlayCustomerSound("NPC_SellFood_0" + rInt, transform.position);
         print("YUM YUM YUM");
     }
 }

@@ -62,7 +62,7 @@ public class GameManager : StaticInstance<GameManager> {
 
 
     private void HandleMenu() {
-        //
+        AudioSystem.Instance.PlayMusic("MainMenuLoop");
     }
 
     private void HandleStarting() {
@@ -76,7 +76,6 @@ public class GameManager : StaticInstance<GameManager> {
     private void HandleGameStarted() { }
 
     private void HandleGameEnd() {
-        AudioSystem.Instance.PlaySound("gameLose", Vector3.zero);
         UIManager.Instance.EndGame();
     }
 }
