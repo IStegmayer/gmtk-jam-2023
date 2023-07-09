@@ -3251,7 +3251,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeToCook: 5
   maxMeals: 5
-  cookProgressionBar: {fileID: 2291058405815387340}
   mealPrefab: {fileID: 2618468309827696031, guid: 17ca265557b6ccc4e8e314c0c674b7ac,
     type: 3}
   mealSpawnPoints:
@@ -3260,12 +3259,23 @@ MonoBehaviour:
   - {fileID: 9193376195489497080}
   - {fileID: 1853162373439385112}
   - {fileID: 7016488260614339792}
+  mealSliders:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   clientLayer:
     serializedVersion: 2
     m_Bits: 128
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 0
+  obstacleCooldown: 3
+  timeOfLastInjury: 0
+  uprightTorqueForce: 1
+  vendorAnimator: {fileID: 0}
+  vendorDraggedFloat: 0
 --- !u!1 &6899445131572320039
 GameObject:
   m_ObjectHideFlags: 0

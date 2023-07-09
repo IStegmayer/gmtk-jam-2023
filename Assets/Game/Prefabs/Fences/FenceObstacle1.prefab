@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1003735824349810968}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: FenceObstacle1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1003735824349810969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1003735826124226232}
@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 1003735826124226237}
   - component: {fileID: 1003735826124226234}
   - component: {fileID: 1003735826124226235}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: MeshHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}

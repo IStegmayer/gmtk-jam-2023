@@ -17,17 +17,21 @@ public class Vendor : MonoBehaviour {
     public float timeOfLastInjury;
     public float uprightTorqueForce = 1;
 
+
+
     private Rigidbody rb;
 
     private float cookTimer;
-    private int currentMeals;
+    public int currentMeals;
+
+    public GameObject dogGameObject;
 
     public Animator vendorAnimator;
     [Range(0, 1)] public float vendorDraggedFloat;
 
     private void Awake() {
         cookTimer = 0f;
-        currentMeals = 0;
+        currentMeals = 4;
         foreach (var mealSlider in mealSliders) {
             mealSlider.maxValue = timeToCook;
             mealSlider.value = cookTimer;
@@ -36,6 +40,7 @@ public class Vendor : MonoBehaviour {
         timeOfLastInjury = Time.time;
 
         rb = GetComponentInParent<Rigidbody>();
+
     }
 
     private void Update() {
@@ -45,6 +50,7 @@ public class Vendor : MonoBehaviour {
             currentMeals++;
             Instantiate(mealPrefab, mealSpawnPoints[currentMeals - 1].position, Quaternion.identity,
                 mealSpawnPoints[currentMeals - 1]);
+            AudioSystem.Instance.PlayVendorSound("NPC_MealCounter_0" + currentMeals, transform.position);
             cookTimer = 0f;
         }
         else if (currentMeals < maxMeals) {
@@ -54,7 +60,15 @@ public class Vendor : MonoBehaviour {
 
         rotationManager();
 
+        Vector3 velHolder = rb.velocity;
+
+        float speedHolder = velHolder.magnitude;
+
+        vendorAnimator.SetFloat("vendorSpeed", speedHolder);
         vendorAnimator.SetFloat("dragged", vendorDraggedFloat);
+
+
+        
     }
 
     private void FixedUpdate()
@@ -73,7 +87,7 @@ public class Vendor : MonoBehaviour {
                     currentMeals--;
                     Destroy(meal);
 
-                    if (other.TryGetComponent<customerScript>(out customerScript currentCustomer)) {
+                    if (other.TryGetComponent<CustomerScript>(out CustomerScript currentCustomer)) {
                         currentCustomer.recievedAHotdog();
                     }
                 }
@@ -103,6 +117,28 @@ public class Vendor : MonoBehaviour {
                             0; // If there is a single hotdog in progress, that is removed when going through a bush.
                     }
                 }
+                    break;
+
+                case 9: //obstacle
+
+                if (obstacleCooldown <
+                    (Time.time -
+                     timeOfLastInjury)) //Quick time buffer so that injuried dont happen repeadely if a bunch of bushes are bunched together
+                {
+                    timeOfLastInjury = Time.time;
+
+                    print("Just ran into " + other);
+
+                    if (currentMeals > 0) {
+                        GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
+                        currentMeals--;
+                        Destroy(meal);
+                    }
+                    else {
+                        cookTimer =
+                            0; // If there is a single hotdog in progress, that is removed when going through a bush.
+                    }
+                }
 
                 break;
         }
@@ -110,38 +146,20 @@ public class Vendor : MonoBehaviour {
 
     private void rotationManager()
     {
-        // print("rotation applied");
 
-        // float pitchLimit = 5f;
+        Vector3 targetVector = new Vector3(1,1,1);
         
-        // float pitchConts = transform.rotation.x;
-        // if (pitchConts>pitchLimit)
-        // {
-        //     pitchConts = pitchLimit;
-        // } else if(pitchConts<-pitchLimit)
-        // {
-        //     pitchConts = -pitchLimit;
-        // }
+        Vector3 focusVector = dogGameObject.transform.position - transform.position;
 
-        // rb.AddTorque(-transform.right * pitchConts * uprightTorqueForce *Time.fixedTime);
+        Quaternion rotationHolder = Quaternion.LookRotation(focusVector, Vector3.up);
 
-        // float rollConst = transform.rotation.z;
-        // if (rollConst>pitchLimit)
-        // {
-        //     rollConst = pitchLimit;
-        // } else if(rollConst< -pitchLimit)
-        // {
-        //     rollConst = -pitchLimit;
-        // }
-        // rb.AddTorque(-transform.forward * rollConst * uprightTorqueForce *Time.fixedTime);
+        transform.rotation = rotationHolder;
 
-        // Vector3 forwardVectorHolder = rb.velocity;
-        // forwardVectorHolder.Normalize();
-
-        // transform.forward = forwardVectorHolder;
-
-            transform.up = Vector3.up;
-
+        if(focusVector.magnitude < 2)
+        {
+            // print("Slowdown");
+            rb.velocity *= 0.5f;// * Time.fixedTime;
+        }
     }
 
     private void scorePoints() { }
