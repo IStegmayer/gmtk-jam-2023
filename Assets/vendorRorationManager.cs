@@ -17,14 +17,6 @@ public class vendorRorationManager : MonoBehaviour
     void Update()
     {
 
-        // Vector3 vectorTowardsDog = dogGameObject.transform.position - transform.position;
-        // vectorTowardsDog.Normalize();
-
-        // print(vectorTowardsDog);
-
-        // Debug.DrawRay(transform.position, transform.position+vectorTowardsDog, Color.red);
-
-        // vectorTowardsDog.y += 2;
         Vector3 newDirection = Vector3.RotateTowards(transform.up, Vector3.up, rotationSpeed * Time.deltaTime,0.0f);
 
         print(transform.up + "-" + newDirection);
