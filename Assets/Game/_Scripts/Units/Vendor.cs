@@ -22,6 +22,8 @@ public class Vendor : MonoBehaviour {
     private float cookTimer;
     private int currentMeals;
 
+    public GameObject dogGameObject;
+
     public Animator vendorAnimator;
     [Range(0, 1)] public float vendorDraggedFloat;
 
@@ -110,38 +112,14 @@ public class Vendor : MonoBehaviour {
 
     private void rotationManager()
     {
-        // print("rotation applied");
 
-        // float pitchLimit = 5f;
+        Vector3 targetVector = new Vector3(1,1,1);
         
-        // float pitchConts = transform.rotation.x;
-        // if (pitchConts>pitchLimit)
-        // {
-        //     pitchConts = pitchLimit;
-        // } else if(pitchConts<-pitchLimit)
-        // {
-        //     pitchConts = -pitchLimit;
-        // }
+        Vector3 focusVector = dogGameObject.transform.position - transform.position;
 
-        // rb.AddTorque(-transform.right * pitchConts * uprightTorqueForce *Time.fixedTime);
+        Quaternion rotationHolder = Quaternion.LookRotation(focusVector, Vector3.up);
 
-        // float rollConst = transform.rotation.z;
-        // if (rollConst>pitchLimit)
-        // {
-        //     rollConst = pitchLimit;
-        // } else if(rollConst< -pitchLimit)
-        // {
-        //     rollConst = -pitchLimit;
-        // }
-        // rb.AddTorque(-transform.forward * rollConst * uprightTorqueForce *Time.fixedTime);
-
-        // Vector3 forwardVectorHolder = rb.velocity;
-        // forwardVectorHolder.Normalize();
-
-        // transform.forward = forwardVectorHolder;
-
-            transform.up = Vector3.up;
-
+        transform.rotation = rotationHolder;
     }
 
     private void scorePoints() { }
