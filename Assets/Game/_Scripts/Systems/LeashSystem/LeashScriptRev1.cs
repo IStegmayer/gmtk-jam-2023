@@ -47,6 +47,9 @@ public class LeashScriptRev1 : MonoBehaviour
             midpoint.AddComponent<LineRenderer>();
             LineRenderer lrHolder = midpoint.GetComponent<LineRenderer>();
             lrHolder.SetWidth(0.1f,0.1f);
+            // lrHolder.StartWidth(0.1f);
+            // lrHolder.EndWidth(0.1f);
+
             lrHolder.material = leashMaterial;
 
 
