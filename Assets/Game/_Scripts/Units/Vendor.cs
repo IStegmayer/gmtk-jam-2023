@@ -17,19 +17,21 @@ public class Vendor : MonoBehaviour {
     public float timeOfLastInjury;
     public float uprightTorqueForce = 1;
 
+
+
     private Rigidbody rb;
 
     private float cookTimer;
-    private int currentMeals;
+    public int currentMeals;
 
     public GameObject dogGameObject;
 
-    public Animator vendorAnimator;
+    // public Animator vendorAnimator;
     [Range(0, 1)] public float vendorDraggedFloat;
 
     private void Awake() {
         cookTimer = 0f;
-        currentMeals = 0;
+        currentMeals = 4;
         foreach (var mealSlider in mealSliders) {
             mealSlider.maxValue = timeToCook;
             mealSlider.value = cookTimer;
@@ -38,6 +40,7 @@ public class Vendor : MonoBehaviour {
         timeOfLastInjury = Time.time;
 
         rb = GetComponentInParent<Rigidbody>();
+
     }
 
     private void Update() {
@@ -56,7 +59,10 @@ public class Vendor : MonoBehaviour {
 
         rotationManager();
 
-        vendorAnimator.SetFloat("dragged", vendorDraggedFloat);
+        // vendorAnimator.SetFloat("dragged", vendorDraggedFloat);
+
+
+        
     }
 
     private void FixedUpdate()
@@ -75,7 +81,7 @@ public class Vendor : MonoBehaviour {
                     currentMeals--;
                     Destroy(meal);
 
-                    if (other.TryGetComponent<customerScript>(out customerScript currentCustomer)) {
+                    if (other.TryGetComponent<CustomerScript>(out CustomerScript currentCustomer)) {
                         currentCustomer.recievedAHotdog();
                     }
                 }
@@ -86,6 +92,28 @@ public class Vendor : MonoBehaviour {
                 break;
 
             case 8: //obstacle
+
+                if (obstacleCooldown <
+                    (Time.time -
+                     timeOfLastInjury)) //Quick time buffer so that injuried dont happen repeadely if a bunch of bushes are bunched together
+                {
+                    timeOfLastInjury = Time.time;
+
+                    print("Just ran into " + other);
+
+                    if (currentMeals > 0) {
+                        GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
+                        currentMeals--;
+                        Destroy(meal);
+                    }
+                    else {
+                        cookTimer =
+                            0; // If there is a single hotdog in progress, that is removed when going through a bush.
+                    }
+                }
+                    break;
+
+                case 9: //obstacle
 
                 if (obstacleCooldown <
                     (Time.time -
@@ -120,6 +148,12 @@ public class Vendor : MonoBehaviour {
         Quaternion rotationHolder = Quaternion.LookRotation(focusVector, Vector3.up);
 
         transform.rotation = rotationHolder;
+
+        if(focusVector.magnitude < 2)
+        {
+            // print("Slowdown");
+            rb.velocity *= 0.5f;// * Time.fixedTime;
+        }
     }
 
     private void scorePoints() { }

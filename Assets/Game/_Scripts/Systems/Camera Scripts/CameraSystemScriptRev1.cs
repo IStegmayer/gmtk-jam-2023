@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class CameraSystemScriptRev1 : MonoBehaviour
 {
     public GameObject dogGameObject;
@@ -29,18 +30,17 @@ public class CameraSystemScriptRev1 : MonoBehaviour
     {
         mainCamera = GetComponentInChildren<Camera>();
         CameraUpdate();
-        // allObjectsToFocusOn.Add(dogGameObject);
         ObjectsUpdate();
 
         dogGameObject = GameObject.Find("Dog");
 
-        // ObjectsUpdate();
+        ObjectsUpdate();
     }
 
 
     void Update()
     {
-        ObjectsUpdate(); //(This can be called by the addition of a nerw customer for efficiency)
+        // ObjectsUpdate(); //(This can be called by the addition of a nerw customer for efficiency)
         CameraUpdate();
         
     }
@@ -50,7 +50,13 @@ public class CameraSystemScriptRev1 : MonoBehaviour
         allObjectsToFocusOn = new List<GameObject>();
         foreach(GameObject obHolder in GameObject.FindGameObjectsWithTag("Customer"))
         {
-            allObjectsToFocusOn.Add(obHolder);
+            if(obHolder.TryGetComponent<CustomerScript>(out CustomerScript currentCustomer))
+            {
+                if(currentCustomer.wantsAHotdog)
+                {
+                    allObjectsToFocusOn.Add(obHolder);
+                }
+            }
         }
 
         allObjectsToFocusOn.Add(dogGameObject);
@@ -67,6 +73,11 @@ public class CameraSystemScriptRev1 : MonoBehaviour
     {
         Vector3 rotaionHolder = new Vector3(-1*pitchAngle,0,0);
         transform.eulerAngles  = rotaionHolder;
+
+        highestPoint = 0;//z
+        lowestPoint = 0;//z
+        leftMostPoint = 0;//x
+        rightMostPoint = 0; //x
        
 
         foreach(GameObject focusObject in allObjectsToFocusOn)
