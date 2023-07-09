@@ -7,18 +7,20 @@ public class UIManager : StaticInstance<UIManager> {
     [SerializeField] private GameObject mainMenuContainer;
     [SerializeField] private GameObject interactablePopUpContainer;
     [SerializeField] private GameObject gameEndContainer;
+    [SerializeField] private GameObject HUDContainer;
 
     public TMP_Text popUpText;
 
     public void StartGame() {
         mainMenuContainer.SetActive(false);
+        HUDContainer.SetActive(true);
         GameManager.Instance.ChangeState(GameState.Starting);
     }
 
     public void EndGame() {
         gameEndContainer.SetActive(true);
-        interactablePopUpContainer.SetActive(false);
-        GameManager.Instance.ChangeState(GameState.End);
+        HUDContainer.SetActive(false);
+        if (IsInteractablePopUpActive()) interactablePopUpContainer.SetActive(false);
     }
 
     public void RestartGame() {

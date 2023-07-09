@@ -11,6 +11,7 @@ public class Vendor : MonoBehaviour {
     public Slider cookProgressionBar;
     public GameObject mealPrefab;
     public Transform[] mealSpawnPoints;
+    public Slider[] mealSliders;
     public LayerMask clientLayer;
     public LayerMask obstacleLayer;
 
@@ -20,11 +21,15 @@ public class Vendor : MonoBehaviour {
     private void Awake() {
         cookTimer = 0f;
         currentMeals = 0;
-        cookProgressionBar.maxValue = timeToCook;
-        cookProgressionBar.value = cookTimer;
+        foreach (var mealSlider in mealSliders) {
+            mealSlider.maxValue = timeToCook;
+            mealSlider.value = cookTimer;
+        }
     }
 
     private void Update() {
+        if (GameManager.Instance.CurrentGameState != GameState.Started) return;
+        
         if (cookTimer >= timeToCook) {
             currentMeals++;
             Instantiate(mealPrefab, mealSpawnPoints[currentMeals - 1].position, Quaternion.identity,
@@ -32,6 +37,7 @@ public class Vendor : MonoBehaviour {
             cookTimer = 0f;
         }
         else if (currentMeals < maxMeals) {
+            mealSliders[currentMeals].value += Time.deltaTime;
             cookTimer += Time.deltaTime;
         }
 
