@@ -96,7 +96,6 @@ namespace Game {
         {
             if(other.gameObject == InspectedInteractable) //Checks to see if layer is interactable
             {
-                print(other.gameObject.name);
                 if (uiManager.IsInteractablePopUpActive())
                 {
                     uiManager.ToggleInteractableTextActivation(false); 
@@ -105,25 +104,6 @@ namespace Game {
             }
         }
 
-        // private void CheckForInteractables() { 
-
-        //     Interactable interactable;
-        //     RaycastHit hit;
-
-        //     Physics.Raycast(transform.position + Vector3.up, transform.forward, out hit, interactRange, interactableLayer);
-        //     // TODO: inefficient
-        //     if (!hit.transform || !hit.transform.TryGetComponent(out interactable)) {
-        //         if (uiManager.IsInteractablePopUpActive()) uiManager.ToggleInteractableTextActivation(false);
-        //         return;
-        //     }
-
-        //     //TODO: change text of the popup here
-        //     // string interactableText = interactable.InteractableText;
-        //     // interactableUI.InteractableText.text = interactableText;
-        //     uiManager.ToggleInteractableTextActivation(true);
-
-        //     if (inputManager.InteractInput) interactable.Interact(this);
-        // }
 
         private void HandleMovement(float delta) 
         {
@@ -141,6 +121,7 @@ namespace Game {
 
         private void HandleRotation(float delta) {
             Vector3 targetDir = Vector3.zero;
+            // targetDir = cameraTransform.forward * inputManager.MovementInput.y*5.882f;
             targetDir = cameraTransform.forward * inputManager.MovementInput.y;
             targetDir += cameraTransform.right * inputManager.MovementInput.x;
             targetDir.Normalize();
@@ -148,10 +129,12 @@ namespace Game {
 
             if (targetDir == Vector3.zero) targetDir = transform.forward;
 
-            Quaternion transformRotation = Quaternion.LookRotation(targetDir);
-            Quaternion targetRotation = Quaternion.Slerp(transform.rotation, transformRotation, rotationSpeed * delta);
+            Vector3 newDirection = Vector3.RotateTowards(transform.forward,targetDir,rotationSpeed * delta,0f);
 
-            transform.rotation = targetRotation;
+            transform.rotation = Quaternion.LookRotation(newDirection);
+
+
+            Debug.DrawRay(transform.position,(4*newDirection)-transform.position,Color.red);
         }
     }
 }

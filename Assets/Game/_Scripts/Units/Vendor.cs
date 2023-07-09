@@ -8,15 +8,22 @@ public class Vendor : MonoBehaviour {
     public float timeToCook;
 
     public int maxMeals;
-    public Slider cookProgressionBar;
     public GameObject mealPrefab;
     public Transform[] mealSpawnPoints;
     public Slider[] mealSliders;
     public LayerMask clientLayer;
     public LayerMask obstacleLayer;
+    public float obstacleCooldown = 3f;
+    public float timeOfLastInjury;
+    public float uprightTorqueForce = 1;
+
+    private Rigidbody rb;
 
     private float cookTimer;
     private int currentMeals;
+
+    public Animator vendorAnimator;
+    [Range(0, 1)] public float vendorDraggedFloat;
 
     private void Awake() {
         cookTimer = 0f;
@@ -25,11 +32,15 @@ public class Vendor : MonoBehaviour {
             mealSlider.maxValue = timeToCook;
             mealSlider.value = cookTimer;
         }
+
+        timeOfLastInjury = Time.time;
+
+        rb = GetComponentInParent<Rigidbody>();
     }
 
     private void Update() {
-        if (GameManager.Instance.CurrentGameState != GameState.Started) return;
-        
+        // if (GameManager.Instance.CurrentGameState != GameState.Started) return;
+
         if (cookTimer >= timeToCook) {
             currentMeals++;
             Instantiate(mealPrefab, mealSpawnPoints[currentMeals - 1].position, Quaternion.identity,
@@ -41,22 +52,98 @@ public class Vendor : MonoBehaviour {
             cookTimer += Time.deltaTime;
         }
 
-        cookProgressionBar.value = cookTimer;
+        rotationManager();
+
+        vendorAnimator.SetFloat("dragged", vendorDraggedFloat);
     }
+
+    private void FixedUpdate()
+    {
+        rotationManager();
+    }
+
 
     // I know this is repeating code but it'll do for now
     private void OnTriggerEnter(Collider other) {
-        if (other.gameObject.layer == 7) {
-            GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
-            currentMeals--;
-            Destroy(meal);
-            // TODO: award points based on how long the client's been waiting
-        }
-        else if (other.gameObject.layer == 8) {
-            GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
-            currentMeals--;
-            Destroy(meal);
+        switch (other.gameObject.layer) {
+            case 7: //client
+
+                if (currentMeals > 0) {
+                    GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
+                    currentMeals--;
+                    Destroy(meal);
+
+                    if (other.TryGetComponent<customerScript>(out customerScript currentCustomer)) {
+                        currentCustomer.recievedAHotdog();
+                    }
+                }
+                else {
+                    print("No meals available to give");
+                }
+
+                break;
+
+            case 8: //obstacle
+
+                if (obstacleCooldown <
+                    (Time.time -
+                     timeOfLastInjury)) //Quick time buffer so that injuried dont happen repeadely if a bunch of bushes are bunched together
+                {
+                    timeOfLastInjury = Time.time;
+
+                    print("Just ran into " + other);
+
+                    if (currentMeals > 0) {
+                        GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
+                        currentMeals--;
+                        Destroy(meal);
+                    }
+                    else {
+                        cookTimer =
+                            0; // If there is a single hotdog in progress, that is removed when going through a bush.
+                    }
+                }
+
+                break;
         }
     }
+
+    private void rotationManager()
+    {
+        // print("rotation applied");
+
+        // float pitchLimit = 5f;
+        
+        // float pitchConts = transform.rotation.x;
+        // if (pitchConts>pitchLimit)
+        // {
+        //     pitchConts = pitchLimit;
+        // } else if(pitchConts<-pitchLimit)
+        // {
+        //     pitchConts = -pitchLimit;
+        // }
+
+        // rb.AddTorque(-transform.right * pitchConts * uprightTorqueForce *Time.fixedTime);
+
+        // float rollConst = transform.rotation.z;
+        // if (rollConst>pitchLimit)
+        // {
+        //     rollConst = pitchLimit;
+        // } else if(rollConst< -pitchLimit)
+        // {
+        //     rollConst = -pitchLimit;
+        // }
+        // rb.AddTorque(-transform.forward * rollConst * uprightTorqueForce *Time.fixedTime);
+
+        // Vector3 forwardVectorHolder = rb.velocity;
+        // forwardVectorHolder.Normalize();
+
+        // transform.forward = forwardVectorHolder;
+
+            transform.up = Vector3.up;
+
+    }
+
+    private void scorePoints() { }
 }
 }
