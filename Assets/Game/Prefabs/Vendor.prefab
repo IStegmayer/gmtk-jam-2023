@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb16931c242f4d41887f46a67809d497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToCook: 5
+  timeToCook: 10
   maxMeals: 5
   cookProgressionBar: {fileID: 2291058405815387340}
   mealPrefab: {fileID: 2618468309827696031, guid: 17ca265557b6ccc4e8e314c0c674b7ac,
@@ -424,6 +424,12 @@ MonoBehaviour:
   - {fileID: 9193376195489497080}
   - {fileID: 1853162373439385112}
   - {fileID: 7016488260614339792}
+  clientLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  obstacleLayer:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &7721656674215318674
 GameObject:
   m_ObjectHideFlags: 0
