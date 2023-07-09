@@ -125,10 +125,14 @@ namespace Game {
             // targetDir = cameraTransform.forward * inputManager.MovementInput.y*5.882f;
             targetDir = cameraTransform.forward * inputManager.MovementInput.y;
             targetDir += cameraTransform.right * inputManager.MovementInput.x;
+<<<<<<< HEAD
 
             print(inputManager.MovementInput.y + "y-x" + inputManager.MovementInput.x+"dir"+targetDir);
             // print(targetDir);
             // targetDir.Normalize();
+=======
+            targetDir.Normalize();
+>>>>>>> 3f9da7cde27edc89c99f426e34e09bfa4395f772
             targetDir.y = 0;
 
             if (targetDir == Vector3.zero) targetDir = transform.forward;

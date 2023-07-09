@@ -7,21 +7,55 @@ namespace Game {
         [Header("Cooking config")] //
         public float timeToCook;
 
+<<<<<<< HEAD
         public int maxMeals;
         public Slider cookProgressionBar;
         public GameObject mealPrefab;
         public Transform[] mealSpawnPoints;
         public LayerMask clientLayer;
         public LayerMask obstacleLayer;
+=======
+    public int maxMeals;
+    public Slider cookProgressionBar;
+    public GameObject mealPrefab;
+    public Transform[] mealSpawnPoints;
+    public Slider[] mealSliders;
+    public LayerMask clientLayer;
+    public LayerMask obstacleLayer;
+>>>>>>> 3f9da7cde27edc89c99f426e34e09bfa4395f772
 
         private float cookTimer;
         private int currentMeals;
 
+<<<<<<< HEAD
         private void Awake() {
             cookTimer = 0f;
             currentMeals = 0;
             cookProgressionBar.maxValue = timeToCook;
             cookProgressionBar.value = cookTimer;
+=======
+    private void Awake() {
+        cookTimer = 0f;
+        currentMeals = 0;
+        foreach (var mealSlider in mealSliders) {
+            mealSlider.maxValue = timeToCook;
+            mealSlider.value = cookTimer;
+        }
+    }
+
+    private void Update() {
+        if (GameManager.Instance.CurrentGameState != GameState.Started) return;
+        
+        if (cookTimer >= timeToCook) {
+            currentMeals++;
+            Instantiate(mealPrefab, mealSpawnPoints[currentMeals - 1].position, Quaternion.identity,
+                mealSpawnPoints[currentMeals - 1]);
+            cookTimer = 0f;
+        }
+        else if (currentMeals < maxMeals) {
+            mealSliders[currentMeals].value += Time.deltaTime;
+            cookTimer += Time.deltaTime;
+>>>>>>> 3f9da7cde27edc89c99f426e34e09bfa4395f772
         }
 
         private void Update() {
