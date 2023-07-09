@@ -9,13 +9,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Dog
   - Water
   - UI
   - Interactable
   - Client
   - Obstacle
-  - 
+  - Obstacle_Dog_Can_Pass
   - 
   - 
   - 

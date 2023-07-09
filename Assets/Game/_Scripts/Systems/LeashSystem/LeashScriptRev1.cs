@@ -44,6 +44,8 @@ public class LeashScriptRev1 : MonoBehaviour
             spawnLocation += collar.transform.position;
 
             GameObject midpoint = Instantiate(leashMidPoint);
+            
+            midpoint.layer = 3;
 
             midpoint.AddComponent<LineRenderer>();
             LineRenderer lrHolder = midpoint.GetComponent<LineRenderer>();

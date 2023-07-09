@@ -21,7 +21,7 @@ public class CameraSystemScriptRev1 : MonoBehaviour
 
 
     public float pitchAngle = -50f;
-    public float minCameraDistance = 15f;
+    public float minCameraDistance = 5f;
 
     public bool cameraSystem = true;
     
@@ -99,9 +99,11 @@ public class CameraSystemScriptRev1 : MonoBehaviour
         Vector3 offsetVector;
 
         float offsetLengthZ = ((highestPoint-lowestPoint)/2)/Mathf.Tan(degToRad(20));
-        float offsetLengthX = ((rightMostPoint-leftMostPoint)/2)/Mathf.Tan(degToRad(20));
+        float offsetLengthX = ((rightMostPoint-leftMostPoint)/2)/Mathf.Tan(degToRad(30));
 
         float offsetLength = Mathf.Max(offsetLengthX,offsetLengthZ,minCameraDistance);
+
+        // print("OffsetLen: "+offsetLength);
 
         Vector3 offsetDirection = new Vector3(0,0,1f);
         offsetDirection = Quaternion.AngleAxis(pitchAngle,  Vector3.left)*offsetDirection;

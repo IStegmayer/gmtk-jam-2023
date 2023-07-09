@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class customerScript : MonoBehaviour
 {
+ 
     public GameObject cameraObject;
-
 
     private float startTimeOfWantingHotdog;
 
@@ -29,6 +29,8 @@ public class customerScript : MonoBehaviour
         debugLight = GetComponentInChildren<Light>();
         updateCameraList();
 
+        cameraObject = GameObject.Find("CameraSystemRev1");
+
 
         requestOrder();
     
@@ -44,7 +46,6 @@ public class customerScript : MonoBehaviour
     {
         if(wantsAHotdog){
             currentWaitTime = (Time.time - startTimeOfWantingHotdog);
-
         }
     }
 
