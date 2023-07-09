@@ -50,7 +50,7 @@ public partial class @PlayerInputs: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""2D Vector kbm"",
                     ""id"": ""430a8099-6082-49b0-8f60-8c0fdf659ec1"",
-                    ""path"": ""2DVector"",
+                    ""path"": ""2DVector(mode=2)"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
