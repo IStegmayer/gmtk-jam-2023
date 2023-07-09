@@ -15,6 +15,7 @@ public class Vendor : MonoBehaviour {
     public LayerMask obstacleLayer;
     public float obstacleCooldown = 3f;
     public float timeOfLastInjury;
+    public float uprightTorqueForce = 1;
 
     private Rigidbody rb;
 
@@ -38,7 +39,7 @@ public class Vendor : MonoBehaviour {
     }
 
     private void Update() {
-        if (GameManager.Instance.CurrentGameState != GameState.Started) return;
+        // if (GameManager.Instance.CurrentGameState != GameState.Started) return;
 
         if (cookTimer >= timeToCook) {
             currentMeals++;
@@ -51,7 +52,14 @@ public class Vendor : MonoBehaviour {
             cookTimer += Time.deltaTime;
         }
 
+        rotationManager();
+
         vendorAnimator.SetFloat("dragged", vendorDraggedFloat);
+    }
+
+    private void FixedUpdate()
+    {
+        rotationManager();
     }
 
 
@@ -100,6 +108,41 @@ public class Vendor : MonoBehaviour {
         }
     }
 
+    private void rotationManager()
+    {
+        // print("rotation applied");
+
+        // float pitchLimit = 5f;
+        
+        // float pitchConts = transform.rotation.x;
+        // if (pitchConts>pitchLimit)
+        // {
+        //     pitchConts = pitchLimit;
+        // } else if(pitchConts<-pitchLimit)
+        // {
+        //     pitchConts = -pitchLimit;
+        // }
+
+        // rb.AddTorque(-transform.right * pitchConts * uprightTorqueForce *Time.fixedTime);
+
+        // float rollConst = transform.rotation.z;
+        // if (rollConst>pitchLimit)
+        // {
+        //     rollConst = pitchLimit;
+        // } else if(rollConst< -pitchLimit)
+        // {
+        //     rollConst = -pitchLimit;
+        // }
+        // rb.AddTorque(-transform.forward * rollConst * uprightTorqueForce *Time.fixedTime);
+
+        // Vector3 forwardVectorHolder = rb.velocity;
+        // forwardVectorHolder.Normalize();
+
+        // transform.forward = forwardVectorHolder;
+
+            transform.up = Vector3.up;
+
+    }
 
     private void scorePoints() { }
 }
