@@ -80,14 +80,14 @@ public class CustomerScript : MonoBehaviour
             transform.GetChild(1).GetChild(i).gameObject.SetActive(false);
         }
 
-        transform.GetChild(1).GetChild(Random.Range(0, 3)).gameObject.SetActive(true);
+        transform.GetChild(1).GetChild(UnityEngine.Random.Range(0, 3)).gameObject.SetActive(true);
 
     }
 
     void updateCameraList()
     {
         int rInt = r.Next(1, 4);
-        AudioSystem.Instance.PlayCustomerSound("NPC_CustomersCommand_0" + rInt, transform.position);
+        //AudioSystem.Instance.PlayCustomerSound("NPC_CustomersCommand_0" + rInt, transform.position);
         cameraObject = GameObject.Find("CameraSystemRev1");
         if(cameraObject.TryGetComponent<CameraSystemScriptRev1>(out CameraSystemScriptRev1 CameraSysScript)){}
         CameraSysScript.ObjectsUpdate();
@@ -111,7 +111,7 @@ public class CustomerScript : MonoBehaviour
         debugLight.intensity = 0;
 
         int rInt = r.Next(1, 4);
-        AudioSystem.Instance.PlayCustomerSound("NPC_SellFood_0" + rInt, transform.position);
+        //AudioSystem.Instance.PlayCustomerSound("NPC_SellFood_0" + rInt, transform.position);
         lastHotDogRecieved = Time.time;
         print("YUM YUM YUM");
 
