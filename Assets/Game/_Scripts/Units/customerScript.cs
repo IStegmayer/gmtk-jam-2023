@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
+namespace Game {
 
 public class CustomerScript : MonoBehaviour
 {
@@ -80,17 +81,17 @@ public class CustomerScript : MonoBehaviour
             transform.GetChild(1).GetChild(i).gameObject.SetActive(false);
         }
 
-        transform.GetChild(1).GetChild(UnityEngine.Random.Range(0, 3)).gameObject.SetActive(true);
+        transform.GetChild(1).GetChild(r.Next(0, 3)).gameObject.SetActive(true);
 
     }
 
     void updateCameraList()
     {
-        int rInt = r.Next(1, 4);
-        //AudioSystem.Instance.PlayCustomerSound("NPC_CustomersCommand_0" + rInt, transform.position);
+        // int rInt = r.Next(1, 4);
+        // //AudioSystem.Instance.PlaySound("NPC_CustomersCommand_01", transform.position);
         cameraObject = GameObject.Find("CameraSystemRev1");
         if(cameraObject.TryGetComponent<CameraSystemScriptRev1>(out CameraSystemScriptRev1 CameraSysScript)){}
-        CameraSysScript.ObjectsUpdate();
+        // CameraSysScript.ObjectsUpdate();
     }
 
     public void requestOrder()
@@ -100,7 +101,7 @@ public class CustomerScript : MonoBehaviour
         {
             wantsAHotdog = true;
             startTimeOfWantingHotdog = Time.time;
-            debugLight.intensity = 10;
+            // debugLight.intensity = 10;
             updateCameraList();
         }
     }
@@ -125,5 +126,6 @@ public class CustomerScript : MonoBehaviour
 
         updateCameraList();
     }
+}
 }
 

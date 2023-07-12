@@ -46,17 +46,17 @@ namespace Game {
         private void Update() {
             // if (GameManager.Instance.CurrentGameState != GameState.Started) return;
 
-            if (cookTimer >= timeToCook) {
-                currentMeals++;
-                Instantiate(mealPrefab, mealSpawnPoints[currentMeals - 1].position, Quaternion.identity,
-                    mealSpawnPoints[currentMeals - 1]);
-                AudioSystem.Instance.PlayVendorSound("NPC_MealCounter_0" + currentMeals, transform.position);
-                cookTimer = 0f;
-            }
-            else if (currentMeals < maxMeals) {
-                mealSliders[currentMeals].value += Time.deltaTime;
-                cookTimer += Time.deltaTime;
-            }
+        if (cookTimer >= timeToCook) {
+            currentMeals++;
+            // Instantiate(mealPrefab, mealSpawnPoints[currentMeals - 1].position, Quaternion.identity,
+            //     mealSpawnPoints[currentMeals - 1]);
+            AudioSystem.Instance.PlayVendorSound("NPC_MealCounter_0" + currentMeals, transform.position);
+            cookTimer = 0f;
+        }
+        else if (currentMeals < maxMeals) {
+            mealSliders[currentMeals].value += Time.deltaTime;
+            cookTimer += Time.deltaTime;
+        }
 
             rotationManager();
 
@@ -80,10 +80,10 @@ namespace Game {
             switch (other.gameObject.layer) {
                 case 7: //client
 
-                    if (currentMeals > 0) {
-                        GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
-                        currentMeals--;
-                        Destroy(meal);
+                if (currentMeals > 0) {
+                    // GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
+                    currentMeals--;
+                    // Destroy(meal);
 
                         if (other.TryGetComponent<CustomerScript>(out CustomerScript currentCustomer)) {
                             currentCustomer.recievedAHotdog();
@@ -105,17 +105,17 @@ namespace Game {
 
                         print("Just ran into " + other);
 
-                        if (currentMeals > 0) {
-                            GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
-                            currentMeals--;
-                            Destroy(meal);
-                        }
-                        else {
-                            cookTimer =
-                                0; // If there is a single hotdog in progress, that is removed when going through a bush.
-                        }
+                    if (currentMeals > 0) {
+                        // GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
+                        currentMeals--;
+                        // Destroy(meal);
                     }
-                        break;
+                    else {
+                        cookTimer =
+                            0; // If there is a single hotdog in progress, that is removed when going through a bush.
+                    }
+                }
+                    break;
 
                     case 9: //obstacle
 
@@ -127,16 +127,16 @@ namespace Game {
 
                         print("Just ran into " + other);
 
-                        if (currentMeals > 0) {
-                            GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
-                            currentMeals--;
-                            Destroy(meal);
-                        }
-                        else {
-                            cookTimer =
-                                0; // If there is a single hotdog in progress, that is removed when going through a bush.
-                        }
+                    if (currentMeals > 0) {
+                        // GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
+                        currentMeals--;
+                        // Destroy(meal);
                     }
+                    else {
+                        cookTimer =
+                            0; // If there is a single hotdog in progress, that is removed when going through a bush.
+                    }
+                }
 
                     break;
             }
