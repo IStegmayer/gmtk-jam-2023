@@ -82,7 +82,7 @@ public class CustomerScript : MonoBehaviour
     void updateCameraList()
     {
         int rInt = r.Next(1, 4);
-        AudioSystem.Instance.PlaySound("NPC_CustomersCommand_0" + rInt, transform.position);
+        AudioSystem.Instance.PlayCustomerSound("NPC_CustomersCommand_0" + rInt, transform.position);
         cameraObject = GameObject.Find("CameraSystemRev1");
         if(cameraObject.TryGetComponent<CameraSystemScriptRev1>(out CameraSystemScriptRev1 CameraSysScript)){}
         // CameraSysScript.ObjectsUpdate();

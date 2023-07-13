@@ -7,6 +7,7 @@ public class UIManager : StaticInstance<UIManager> {
     [SerializeField] private GameObject mainMenuContainer;
     [SerializeField] private GameObject interactablePopUpContainer;
     [SerializeField] private GameObject gameEndContainer;
+    [SerializeField] private TextMeshProUGUI gameEndScore;
     [SerializeField] private GameObject HUDContainer;
     
     public void StartGame() {
@@ -16,6 +17,7 @@ public class UIManager : StaticInstance<UIManager> {
     }
 
     public void EndGame() {
+        gameEndScore.text = "Dogs sold: " + GameManager.Instance.CurrentScore;
         gameEndContainer.SetActive(true);
         HUDContainer.SetActive(false);
         if (IsInteractablePopUpActive()) interactablePopUpContainer.SetActive(false);

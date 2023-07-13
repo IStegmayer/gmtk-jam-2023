@@ -3237,7 +3237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb16931c242f4d41887f46a67809d497, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToCook: 2
+  timeToCook: 2.5
   maxMeals: 5
   mealPrefab: {fileID: 2618468309827696031, guid: 17ca265557b6ccc4e8e314c0c674b7ac,
     type: 3}
