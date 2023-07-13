@@ -24,7 +24,7 @@ public class UIManager : StaticInstance<UIManager> {
     }
 
     public void RestartGame() {
-        SceneManager.LoadScene("MainScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ToggleInteractableTextActivation(bool status)
