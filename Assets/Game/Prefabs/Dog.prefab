@@ -389,7 +389,6 @@ GameObject:
   - component: {fileID: 4238002917823687421}
   - component: {fileID: 538901460}
   - component: {fileID: 538901461}
-  - component: {fileID: 538901462}
   m_Layer: 0
   m_Name: Dog
   m_TagString: Untagged
@@ -521,23 +520,6 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -3715082570513901642, guid: 5f8667d0c1ab640449f781559945b276, type: 3}
---- !u!114 &538901462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4238002917823687393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f511d6225f5f58342ad5b608bbcb5ed9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ownerHand: {fileID: 0}
-  collar: {fileID: 1778983516}
-  leashHandle: {fileID: 0}
-  maxLeashLength: 5
-  leashIsHeld: 0
 --- !u!1001 &708095145398789566
 PrefabInstance:
   m_ObjectHideFlags: 0

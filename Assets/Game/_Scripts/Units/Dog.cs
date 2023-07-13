@@ -41,6 +41,7 @@ namespace Game {
         }
 
         private void Update() {
+            if (GameManager.Instance.CurrentGameState != GameState.Started) return;
             float delta = Time.deltaTime;
 
             HandleMovement(delta);
@@ -85,7 +86,7 @@ namespace Game {
                     if (!uiManager.IsInteractablePopUpActive())
                     {
                         Interactable interHolder = other.gameObject.GetComponent<Interactable>();
-                        uiManager.changeinteractablePopUpContainerText(interHolder.InteractableText);
+                        uiManager.ChangeInteractablePopUpContainerText(interHolder.InteractableText);
                         uiManager.ToggleInteractableTextActivation(true);
                     }
                 }

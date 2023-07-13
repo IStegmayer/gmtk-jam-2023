@@ -13,11 +13,20 @@ public class GameManager : StaticInstance<GameManager> {
     public float LevelDuration;
     public Slider GameTimerSlider;
     private float gameTimer;
-    private float score;
+    
+    // public float highScore;
+    public float CurrentScore = 0;
+    public TextMeshProUGUI scoreText;
+
+    public void AddPoints(float timeTaken)
+    {
+        CurrentScore ++;
+        scoreText.text = CurrentScore + " Dogs Served";
+    }
 
 
-    // Kick the game off with the first state
     private void Start() {
+        CurrentScore = 0;
         gameTimer = LevelDuration;
         ChangeState(GameState.Menu);
     }
@@ -73,7 +82,9 @@ public class GameManager : StaticInstance<GameManager> {
         ChangeState(GameState.Started);
     }
 
-    private void HandleGameStarted() { }
+    private void HandleGameStarted() {
+        
+    }
 
     private void HandleGameEnd() {
         UIManager.Instance.EndGame();

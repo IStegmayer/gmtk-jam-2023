@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Random = System.Random;
 
@@ -33,11 +31,10 @@ public class CustomerScript : MonoBehaviour
     void Start()
     {
         debugLight = GetComponentInChildren<Light>();
-
+        updateCameraList();
         
         chooseClothes();
         
-   
         updateCameraList();
 
         // requestOrder();
@@ -46,13 +43,10 @@ public class CustomerScript : MonoBehaviour
     
     }
 
-    void Awake()
-    {
-        updateCameraList();
-    }
-
     void Update()
     {
+        if (GameManager.Instance.CurrentGameState != GameState.Started) return;
+        
         if(wantsAHotdog){
             currentWaitTime = (Time.time - startTimeOfWantingHotdog);
         }
@@ -87,8 +81,8 @@ public class CustomerScript : MonoBehaviour
 
     void updateCameraList()
     {
-        // int rInt = r.Next(1, 4);
-        // //AudioSystem.Instance.PlaySound("NPC_CustomersCommand_01", transform.position);
+        int rInt = r.Next(1, 4);
+        AudioSystem.Instance.PlaySound("NPC_CustomersCommand_0" + rInt, transform.position);
         cameraObject = GameObject.Find("CameraSystemRev1");
         if(cameraObject.TryGetComponent<CameraSystemScriptRev1>(out CameraSystemScriptRev1 CameraSysScript)){}
         // CameraSysScript.ObjectsUpdate();
@@ -112,15 +106,9 @@ public class CustomerScript : MonoBehaviour
         debugLight.intensity = 0;
 
         int rInt = r.Next(1, 4);
-        //AudioSystem.Instance.PlayCustomerSound("NPC_SellFood_0" + rInt, transform.position);
+        AudioSystem.Instance.PlayCustomerSound("NPC_SellFood_0" + rInt, transform.position);
         lastHotDogRecieved = Time.time;
-        print("YUM YUM YUM");
-
-        GameObject SMHolder = GameObject.Find("ScoreManager");
-        if(SMHolder.TryGetComponent<scoreManagerScript>(out scoreManagerScript scoreScript)){
-            scoreScript.addPoints(currentWaitTime);
-        }
-        
+        GameManager.Instance.AddPoints(currentWaitTime);
 
         currentWaitTime = 0;
 

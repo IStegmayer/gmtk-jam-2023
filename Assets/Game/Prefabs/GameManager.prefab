@@ -44,4 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64255451423348c3acc3485349c69db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LevelDuration: 5
+  Vendor: {fileID: 0}
+  LevelDuration: 106
+  GameTimerSlider: {fileID: 0}
+  CurrentScore: 0
+  scoreText: {fileID: 0}

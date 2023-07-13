@@ -8,9 +8,7 @@ public class UIManager : StaticInstance<UIManager> {
     [SerializeField] private GameObject interactablePopUpContainer;
     [SerializeField] private GameObject gameEndContainer;
     [SerializeField] private GameObject HUDContainer;
-
-    public TMP_Text popUpText;
-
+    
     public void StartGame() {
         mainMenuContainer.SetActive(false);
         HUDContainer.SetActive(true);
@@ -23,26 +21,13 @@ public class UIManager : StaticInstance<UIManager> {
         if (IsInteractablePopUpActive()) interactablePopUpContainer.SetActive(false);
     }
 
-    public void RestartGame() {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-    }
+    public void RestartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    public void ToggleInteractableTextActivation(bool status) => interactablePopUpContainer.SetActive(status);
+    public bool IsInteractablePopUpActive() => interactablePopUpContainer.activeInHierarchy;
 
-    public void ToggleInteractableTextActivation(bool status)
-    {
-        interactablePopUpContainer.SetActive(status);
-    } 
-    public bool IsInteractablePopUpActive()
-    {
-        return interactablePopUpContainer.activeInHierarchy;
-    }
-
-    public void changeinteractablePopUpContainerText(string input)
-    {
-        TMP_Text strholder = interactablePopUpContainer.GetComponentInChildren<TMP_Text>(true);
-        // print("->>>"+strholder);
-
-        strholder.text = input;
-
+    public void ChangeInteractablePopUpContainerText(string input) {
+        TMP_Text strHolder = interactablePopUpContainer.GetComponentInChildren<TMP_Text>(true);
+        strHolder.text = input;
     }
 }
 }

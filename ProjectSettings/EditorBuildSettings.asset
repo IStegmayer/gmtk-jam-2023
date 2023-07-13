@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Game/Scenes/MainScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Game/Scenes/LevelDesignCleanup.unity
+    guid: d7eef138af2a6634ebe20b1c43ff956b
   m_configObjects: {}
