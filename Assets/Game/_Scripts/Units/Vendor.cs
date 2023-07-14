@@ -17,7 +17,6 @@ public class Vendor : MonoBehaviour {
     public float timeOfLastInjury;
     public float uprightTorqueForce = 1;
 
-
     private Rigidbody rb;
 
     private float cookTimer;
@@ -48,7 +47,8 @@ public class Vendor : MonoBehaviour {
             //     mealSpawnPoints[currentMeals - 1]);
             AudioSystem.Instance.PlayVendorSound("NPC_MealCounter_0" + currentMeals, transform.position);
             cookTimer = 0f;
-        }else if (currentMeals < maxMeals) {
+        }
+        else if (currentMeals < maxMeals) {
             mealSliders[currentMeals].value += Time.deltaTime;
             cookTimer += Time.deltaTime;
         }
@@ -77,11 +77,13 @@ public class Vendor : MonoBehaviour {
 
                 if (currentMeals > 0) {
                     // GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
-                    UpdateMealCount();
                     // Destroy(meal);
 
                     if (other.TryGetComponent<CustomerScript>(out CustomerScript currentCustomer)) {
-                        if (currentCustomer.wantsAHotdog) currentCustomer.recievedAHotdog();
+                        if (currentCustomer.wantsAHotdog) {
+                            UpdateMealCount();
+                            currentCustomer.recievedAHotdog();
+                        }
                     }
                     else {
                         // TODO: sfx
@@ -108,10 +110,6 @@ public class Vendor : MonoBehaviour {
                         UpdateMealCount();
                         // Destroy(meal);
                     }
-                    else {
-                        cookTimer =
-                            0; // If there is a single hotdog in progress, that is removed when going through a bush.
-                    }
                 }
 
                 break;
@@ -130,10 +128,6 @@ public class Vendor : MonoBehaviour {
                         // GameObject meal = mealSpawnPoints[currentMeals - 1].GetChild(0).gameObject;
                         currentMeals--;
                         // Destroy(meal);
-                    }
-                    else {
-                        cookTimer =
-                            0; // If there is a single hotdog in progress, that is removed when going through a bush.
                     }
                 }
 
@@ -156,10 +150,15 @@ public class Vendor : MonoBehaviour {
         }
     }
 
-    public void UpdateMealCount() {
+    private void UpdateMealCount() {
         currentMeals--;
-        mealSliders[currentMeals].value = mealSliders[currentMeals+1].value;
-        mealSliders[currentMeals+1].value = 0;
+        if (currentMeals == maxMeals - 1) {
+            mealSliders[currentMeals].value = 0;
+        }
+        else {
+            mealSliders[currentMeals].value = mealSliders[currentMeals + 1].value;
+            mealSliders[currentMeals + 1].value = 0;
+        }
     }
 }
 }

@@ -11,14 +11,18 @@ public class GameManager : StaticInstance<GameManager> {
     public GameState CurrentGameState { get; private set; }
 
     public float LevelDuration;
-    public Slider GameTimerSlider;
-    private float gameTimer;
+    public int ActiveCustomersAtStart;
     
     // public float highScore;
-    public float CurrentScore = 0;
+    public Slider GameTimerSlider;
+    public float CurrentScore;
     public TextMeshProUGUI scoreText;
+    public GameObject CustomersContainer;
+    
 
-    public void AddPoints(float timeTaken)
+    private CustomerScript[] customers;
+    private float gameTimer;
+    public void AddPoints()
     {
         CurrentScore ++;
         scoreText.text = CurrentScore + " Dogs Served";
