@@ -76,3 +76,6 @@ crashlytics-build.properties
 *.akd
 *.prof
 *.validationcache
+
+# Misc export
+/Misc/export/

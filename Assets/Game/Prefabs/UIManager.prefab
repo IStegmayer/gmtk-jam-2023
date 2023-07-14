@@ -47,4 +47,5 @@ MonoBehaviour:
   mainMenuContainer: {fileID: 0}
   interactablePopUpContainer: {fileID: 0}
   gameEndContainer: {fileID: 0}
-  popUpText: {fileID: 0}
+  gameEndScore: {fileID: 0}
+  HUDContainer: {fileID: 0}

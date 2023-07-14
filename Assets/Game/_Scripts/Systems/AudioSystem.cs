@@ -9,6 +9,9 @@ namespace Game {
 public class AudioSystem : StaticInstance<AudioSystem> {
     [SerializeField] private AudioSource musicSource;
     [SerializeField] private AudioSource soundsSource;
+    [SerializeField] private AudioSource dogStepsSource;
+    [SerializeField] private AudioSource NPCSource;
+    [SerializeField] private AudioSource clientSource;
 
     public Sound[] sounds;
 
@@ -61,6 +64,42 @@ public class AudioSystem : StaticInstance<AudioSystem> {
             soundsSource.Play();
         else
             soundsSource.PlayOneShot(soundsSource.clip, vol);
+    }
+    
+    public void PlayCustomerSound(string clipName, Vector3 pos, float vol = 1) {
+        Sound s = Array.Find(sounds, sound => sound.Name == clipName);
+        if (s == null) {
+            Debug.LogWarning("Sound: " + clipName + " not found!");
+            return;
+        }
+
+        clientSource.transform.position = pos;
+        clientSource.clip = s.Source.clip;
+        clientSource.loop = s.Source.loop;
+        clientSource.volume = s.Source.volume;
+
+        if (clientSource.loop)
+            clientSource.Play();
+        else
+            clientSource.PlayOneShot(clientSource.clip, vol);
+    }
+    
+    public void PlayVendorSound(string clipName, Vector3 pos, float vol = 1) {
+        Sound s = Array.Find(sounds, sound => sound.Name == clipName);
+        if (s == null) {
+            Debug.LogWarning("Sound: " + clipName + " not found!");
+            return;
+        }
+
+        NPCSource.transform.position = pos;
+        NPCSource.clip = s.Source.clip;
+        NPCSource.loop = s.Source.loop;
+        NPCSource.volume = s.Source.volume;
+
+        if (NPCSource.loop)
+            NPCSource.Play();
+        else
+            NPCSource.PlayOneShot(NPCSource.clip, vol);
     }
 
 

@@ -41,6 +41,7 @@ namespace Game {
         }
 
         private void Update() {
+            if (GameManager.Instance.CurrentGameState != GameState.Started) return;
             float delta = Time.deltaTime;
 
             HandleMovement(delta);
@@ -85,7 +86,7 @@ namespace Game {
                     if (!uiManager.IsInteractablePopUpActive())
                     {
                         Interactable interHolder = other.gameObject.GetComponent<Interactable>();
-                        uiManager.changeinteractablePopUpContainerText(interHolder.InteractableText);
+                        uiManager.ChangeInteractablePopUpContainerText(interHolder.InteractableText);
                         uiManager.ToggleInteractableTextActivation(true);
                     }
                 }
@@ -116,7 +117,7 @@ namespace Game {
             // for now just binary anim switch
             float anim_val = (Math.Abs(movement.x) < 0.1 && Math.Abs(movement.z) < 0.1)? 0 : 1;
             //Debug.Log($"Sending {anim_val} to 'walking'");
-            dogAnimator.SetFloat("walking", anim_val);
+            dogAnimator.SetFloat("running", anim_val);
         }
 
         private void HandleRotation(float delta) {
