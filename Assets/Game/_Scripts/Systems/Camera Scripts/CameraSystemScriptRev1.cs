@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+using Game;
+
 public class CameraSystemScriptRev1 : MonoBehaviour
 {
     private GameObject dogGameObject;
@@ -9,6 +11,8 @@ public class CameraSystemScriptRev1 : MonoBehaviour
     private Camera mainCamera;
 
     private List<GameObject> objectsToFocusOn = new List<GameObject>();
+
+    // private CustomerScript ab;
     
     private float maxX; 
     private float minX;
@@ -18,7 +22,10 @@ public class CameraSystemScriptRev1 : MonoBehaviour
     private float distanceX;
     private float distanceZ;
 
-    private float angle2;
+    private float angle2H;
+    private float angle2W;
+
+    private Vector3 cameraLookUnitVector;
 
     private Vector3 pointToLookAt;
     private Vector3 rotaionHolder;
@@ -27,27 +34,34 @@ public class CameraSystemScriptRev1 : MonoBehaviour
 
     [Header("Design Variables")] //
     public float pitchAngle = 50f;
-    public float minimumCameraDistance = 30f;
+    public float minimumCameraDistance = 0f;
+    public float zoomBuffer = 1.2f;
     public bool cameraFollowsDog = true;
     public bool cameraFollowsVendor = true;
     public bool cameraFollowsCustomers = true;
-    // public List<String> namesOfObjectsToFollow = new List<String>();
     
-
     void Start()
     {
         mainCamera = GetComponentInChildren<Camera>();
         UpdateCameraFocusPoints();
-        pointToLookAt = GameObject.Find("Dog").transform.position;
-        angle2 = mainCamera.fieldOfView * mainCamera.aspect;
-        rotaionHolder = new Vector3(pitchAngle,0,0);
-        transform.eulerAngles = rotaionHolder;
+        pointToLookAt = GameObject.Find("Dog").transform.position;   //Need to update this 
+        angle2H = mainCamera.fieldOfView;
+        angle2W = mainCamera.fieldOfView * mainCamera.aspect;
+
+        cameraLookUnitVector = Vector3.forward;
+
+        cameraLookUnitVector = Quaternion.AngleAxis(pitchAngle,Vector3.right) * cameraLookUnitVector;
+
+        transform.forward = cameraLookUnitVector;
     }
 
 
     void Update()
     {
+
+        // print(mainCamera.aspect);
         UpdateCameraFocusPoints(); //   This function can be called from a cutomer after making or recieving an order to improve to improve optimsation.
+        limitsUpdate();
         cameraPositionUpdate();
     }
 
@@ -67,9 +81,15 @@ public class CameraSystemScriptRev1 : MonoBehaviour
 
         if(cameraFollowsCustomers)
         {
-            foreach (GameObject item in FindGameObjectsWithTag("Customer"))
+            foreach (GameObject item in GameObject.FindGameObjectsWithTag("Customer"))
             {
-                objectsToFocusOn.Add(item);
+                if(item.TryGetComponent<CustomerScript>(out CustomerScript custScript))
+                {
+                    print("ABC");
+                    if(custScript.wantsAHotdog){
+                        objectsToFocusOn.Add(item);
+                    }
+                }
             }
         }
     }
@@ -81,55 +101,57 @@ public class CameraSystemScriptRev1 : MonoBehaviour
 
     void limitsUpdate()
     {
-        minX = null;
-        maxX = null;
-        minZ = null;
-        maxZ = null;
+
+        Vector3 dogSpotHolder = GameObject.Find("Dog").transform.position;
+        minX = dogSpotHolder.x;
+        maxX = dogSpotHolder.x;
+        minZ = dogSpotHolder.z;
+        maxZ = dogSpotHolder.z;
+
+
 
         foreach(GameObject item in objectsToFocusOn){
-            if(objectsToFocusOn.transform.position.x < minX)
+
+            // Debug.DrawRay(transform.position,transform.position)
+
+            if(item.transform.position.x < minX)
             {
-                minX = objectsToFocusOn.transform.position.x;
+                minX = item.transform.position.x;
             }
 
-            if(objectsToFocusOn.transform.position.x > maxX)
+            if(item.transform.position.x > maxX)
             {
-                maxX = objectsToFocusOn.transform.position.x;
+                maxX = item.transform.position.x;
             }
 
-            if(objectsToFocusOn.transform.position.z < minZ)
+            if(item.transform.position.z < minZ)
             {
-                minZ = objectsToFocusOn.transform.position.z;
+                minZ = item.transform.position.z;
             }
 
-            if(objectsToFocusOn.transform.position.x > maxZ)
+            if(item.transform.position.x > maxZ)
             {
-                maxZ = objectsToFocusOn.transform.position.z;
+                maxZ = item.transform.position.z;
             }
         }
+
+        distanceX = Mathf.Abs(maxZ - minZ);
+
+        distanceZ = Mathf.Abs(maxX - minX);
     }
 
     void cameraPositionUpdate()
     {
-
-        pointToLookAt = new Vector3(minX-maxX,0,minZ-maxZ);
+        pointToLookAt = new Vector3(minX+maxX,2f,minZ+maxZ);
         pointToLookAt /= 2;
-
-        distanceUpdate();
-        
-        transform.position = pointToLookAt + (focalLength*(-transform.eulerAngles));
-
+        distanceUpdate();    
+        transform.position = pointToLookAt + (1.1f*focalLength*(-1*cameraLookUnitVector));
     }
 
     void distanceUpdate()
     {
-
-        float distW = distanceX / (2 * Mathf.tan(degToRad(angle2)/2));
-
-        float distH = distanceZ * Mathf.sin(degToRad(pitchAngle)) / (2 * Mathf.tan(degToRad(angle2)/2));
-
+        float distW = zoomBuffer*distanceX / (2*Mathf.Tan(degToRad(angle2W/2)));
+        float distH = zoomBuffer*distanceZ / (2*Mathf.Tan(degToRad(angle2H/2)));
         focalLength = Mathf.Max(minimumCameraDistance,distW,distH);
-
     }
-
 }
