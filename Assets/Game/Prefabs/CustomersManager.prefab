@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7789ea739854210489fdc5c6420eb187, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  howManyCustomersToStartWith: 7
+  howManyCustomersToStartWith: 8
   listOfCustomers: []
   waitForNewCustomerMin: 3
-  waitForNewCustomerMax: 10
+  waitForNewCustomerMax: 7

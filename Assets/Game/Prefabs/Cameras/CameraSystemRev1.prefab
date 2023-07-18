@@ -163,7 +163,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1881c97953cc85a4ebeeea31740676ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dogGameObject: {fileID: 0}
-  pitchAngle: -50
-  cameraDistance: 30
-  cameraSystem: 1
+  pitchAngle: 45
+  minimumCameraDistance: 25
+  zoomBuffer: 1.2
+  cameraFollowsDog: 1
+  cameraFollowsVendor: 0
+  cameraFollowsCustomers: 0

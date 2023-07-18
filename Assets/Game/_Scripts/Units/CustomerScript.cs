@@ -24,10 +24,11 @@ public class CustomerScript : MonoBehaviour {
     // private scoreManagerScript scoreScript;
     // private CameraSystemScriptRev1 CameraSysScript;
     // Start is called before the first frame update
-
+    private void Awake() {
+        debugLight = GetComponentInChildren<Light>();
+    }
 
     void Start() {
-        debugLight = GetComponentInChildren<Light>();
         updateCameraList();
 
         chooseClothes();
@@ -47,7 +48,7 @@ public class CustomerScript : MonoBehaviour {
         }
 
         if (wantsAHotdog) {
-            transform.position = normalLocation + new Vector3(0, 0.5f * Mathf.Sin(10 * Time.time), 0);
+            transform.position = normalLocation + new Vector3(0, Mathf.Abs(1f * Mathf.Sin(10 * Time.time)), 0);
             // print("I want a hotdog");
         }
         else {
@@ -83,7 +84,7 @@ public class CustomerScript : MonoBehaviour {
                 AudioSystem.Instance.PlayCustomerSound("NPC_CustomersCommand_0" + rInt, transform.position);
             }
             startTimeOfWantingHotdog = Time.time;
-            // debugLight.intensity = 10;
+            debugLight.intensity = 15;
             updateCameraList();
         }
     }
