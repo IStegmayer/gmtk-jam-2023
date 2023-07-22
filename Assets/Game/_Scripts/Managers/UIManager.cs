@@ -13,6 +13,8 @@ public class UIManager : StaticInstance<UIManager> {
     public void StartGame() {
         mainMenuContainer.SetActive(false);
         HUDContainer.SetActive(true);
+        interactablePopUpContainer.SetActive(true);
+        Destroy(interactablePopUpContainer, 5f);
         GameManager.Instance.ChangeState(GameState.Starting);
     }
 

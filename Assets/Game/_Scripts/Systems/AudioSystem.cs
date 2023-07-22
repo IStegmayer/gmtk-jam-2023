@@ -65,7 +65,7 @@ public class AudioSystem : StaticInstance<AudioSystem> {
         else
             soundsSource.PlayOneShot(soundsSource.clip, vol);
     }
-    
+
     public void PlayCustomerSound(string clipName, Vector3 pos, float vol = 1) {
         Sound s = Array.Find(sounds, sound => sound.Name == clipName);
         if (s == null) {
@@ -83,7 +83,7 @@ public class AudioSystem : StaticInstance<AudioSystem> {
         else
             clientSource.PlayOneShot(clientSource.clip, vol);
     }
-    
+
     public void PlayVendorSound(string clipName, Vector3 pos, float vol = 1) {
         Sound s = Array.Find(sounds, sound => sound.Name == clipName);
         if (s == null) {

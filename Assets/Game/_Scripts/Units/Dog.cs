@@ -47,7 +47,6 @@ namespace Game {
             HandleMovement(delta);
             HandleRotation(delta);
             interactionChecker();
-
         }
 
         private void interactionChecker()
