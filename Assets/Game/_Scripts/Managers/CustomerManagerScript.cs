@@ -24,14 +24,18 @@ public class CustomerManagerScript : MonoBehaviour {
             lastOrderMadeTime = Time.time;
         }
 
-        for (int i = 0; i < howManyCustomersToStartWith; i += 1) {
-            CustomerScript CSHolder =
-                listOfCustomers[Random.Range(0, listOfCustomers.Count)].GetComponent<CustomerScript>();
+        int numberOfCustomersInScene = listOfCustomers.Count; 
 
-            if (CSHolder.wantsAHotdog) {
+        for (int i = 0; i < howManyCustomersToStartWith && i < numberOfCustomersInScene; i += 1) {
+            
+            CustomerScript CSHolder = listOfCustomers[Random.Range(0, listOfCustomers.Count)].GetComponent<CustomerScript>();
+
+            if (CSHolder.wantsAHotdog) 
+            {
                 i -= 1;
             }
-            else {
+            else 
+            {
                 CSHolder.requestOrder(false);
             }
         }
