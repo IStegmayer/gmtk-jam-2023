@@ -23,7 +23,7 @@ public class CustomerManagerScript : MonoBehaviour {
 
             lastOrderMadeTime = Time.time;
         }
-
+        howManyCustomersToStartWith = Mathf.Clamp(howManyCustomersToStartWith, 0, listOfCustomers.Count);
         for (int i = 0; i < howManyCustomersToStartWith; i += 1) {
             CustomerScript CSHolder =
                 listOfCustomers[Random.Range(0, listOfCustomers.Count)].GetComponent<CustomerScript>();

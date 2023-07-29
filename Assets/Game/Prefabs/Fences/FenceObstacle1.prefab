@@ -25,8 +25,8 @@ Transform:
   m_GameObject: {fileID: 1003735824349810969}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1003735826124226232}
   m_Father: {fileID: 0}
@@ -41,10 +41,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1003735826124226232}
-  - component: {fileID: 1003735826124226236}
   - component: {fileID: 1003735826124226237}
   - component: {fileID: 1003735826124226234}
-  - component: {fileID: 1003735826124226235}
+  - component: {fileID: 2142945365886147677}
   m_Layer: 0
   m_Name: MeshHolder
   m_TagString: Untagged
@@ -61,26 +60,12 @@ Transform:
   m_GameObject: {fileID: 1003735826124226233}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1003735824349810968}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1003735826124226236
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1003735826124226233}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7691067369214032407, guid: 5c261fd8816f70041be9c6dcc0874efb, type: 3}
 --- !u!33 &1003735826124226237
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -131,8 +116,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1003735826124226235
-MeshCollider:
+--- !u!65 &2142945365886147677
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -141,7 +126,6 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7691067369214032407, guid: 5c261fd8816f70041be9c6dcc0874efb, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 1.7996777, y: 1.0550781, z: 0.5414331}
+  m_Center: {x: -0.8947305, y: 0.52243096, z: 0.26560915}

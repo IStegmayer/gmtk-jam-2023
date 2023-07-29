@@ -9,10 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6961333183259934591}
-  - component: {fileID: 6961333183259934587}
   - component: {fileID: 6961333183259934586}
   - component: {fileID: 6961333183259934589}
-  - component: {fileID: 6961333183259934588}
+  - component: {fileID: 8313509780243765811}
   m_Layer: 8
   m_Name: MeshHolder
   m_TagString: Untagged
@@ -28,27 +27,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6961333183259934590}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.6, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0, y: -0.3, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6961333183594867904}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &6961333183259934587
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6961333183259934590}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -299568527240110197, guid: 03edcb7d05c32074f876f4008a00626d, type: 3}
 --- !u!33 &6961333183259934586
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -99,8 +84,8 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6961333183259934588
-MeshCollider:
+--- !u!65 &8313509780243765811
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -109,10 +94,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: -299568527240110197, guid: 03edcb7d05c32074f876f4008a00626d, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 2.0046682, y: 1.6023765, z: 0.17204034}
+  m_Center: {x: -1.0023339, y: 0.7654269, z: 0.085819095}
 --- !u!1 &6961333183594867907
 GameObject:
   m_ObjectHideFlags: 0
@@ -138,8 +122,8 @@ Transform:
   m_GameObject: {fileID: 6961333183594867907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 2}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6961333183259934591}
   m_Father: {fileID: 0}
