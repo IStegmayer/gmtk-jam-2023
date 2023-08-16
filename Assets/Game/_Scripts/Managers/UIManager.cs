@@ -27,7 +27,7 @@ public class UIManager : StaticInstance<UIManager> {
 
     public void RestartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     public void ToggleInteractableTextActivation(bool status) => interactablePopUpContainer.SetActive(status);
-    public bool IsInteractablePopUpActive() => interactablePopUpContainer.activeInHierarchy;
+    public bool IsInteractablePopUpActive() => interactablePopUpContainer && interactablePopUpContainer.activeInHierarchy;
 
     public void ChangeInteractablePopUpContainerText(string input) {
         TMP_Text strHolder = interactablePopUpContainer.GetComponentInChildren<TMP_Text>(true);

@@ -2,139 +2,130 @@
 using UnityEngine;
 
 namespace Game {
-    public class Dog : MonoBehaviour {
-        [Header("Movement configs")] //
-        [SerializeField] private float speed;
-        [SerializeField] private float rotationSpeed;
-        [SerializeField] private float groundedGravity;
+public class Dog : MonoBehaviour {
+    [Header("Movement configs")] //
+    [SerializeField]
+    private float speed;
 
-        [SerializeField] private Animator dogAnimator;
+    [SerializeField] private float rotationSpeed;
+    [SerializeField] private float groundedGravity;
 
-        [Header("Interaction configs")] //
-        [SerializeField] private LayerMask interactableLayer;
-        [SerializeField] private float interactRange;
+    [SerializeField] private Animator dogAnimator;
 
-        private CharacterController controller;
-        private InputManager inputManager;
-        private UIManager uiManager;
-        private Transform cameraTransform;
+    [Header("Interaction configs")] //
+    [SerializeField]
+    private LayerMask interactableLayer;
 
-        private GameObject ColliderSensorChild;
-        private MeshCollider ColliderSensor;
-        private GameObject InspectedInteractable;
-    
-        public Interactable scriptOfHeldObject = null; 
-        public bool DogIsHoldingSomething = false;
+    [SerializeField] private float interactRange;
 
-        private void Awake() {
-            controller = GetComponent<CharacterController>();
+    private CharacterController controller;
+    private InputManager inputManager;
+    private UIManager uiManager;
+    private Transform cameraTransform;
 
-            ColliderSensorChild = this.gameObject.transform.GetChild(0).gameObject;
-            ColliderSensor = ColliderSensorChild.GetComponent<MeshCollider>();
+    private GameObject ColliderSensorChild;
+    private MeshCollider ColliderSensor;
+    private GameObject InspectedInteractable;
 
-        }
+    public Interactable scriptOfHeldObject = null;
+    public bool DogIsHoldingSomething = false;
 
-        private void Start() {
-            inputManager = InputManager.Instance;
-            uiManager = UIManager.Instance;
-            cameraTransform = Camera.main.transform;
-        }
+    private void Awake() {
+        controller = GetComponent<CharacterController>();
 
-        private void Update() {
-            if (GameManager.Instance.CurrentGameState != GameState.Started) return;
-            float delta = Time.deltaTime;
+        ColliderSensorChild = this.gameObject.transform.GetChild(0).gameObject;
+        ColliderSensor = ColliderSensorChild.GetComponent<MeshCollider>();
+    }
 
-            HandleMovement(delta);
-            HandleRotation(delta);
-            interactionChecker();
-        }
+    private void Start() {
+        inputManager = InputManager.Instance;
+        uiManager = UIManager.Instance;
+        cameraTransform = Camera.main.transform;
+    }
 
-        private void interactionChecker()
-        {
-            if (inputManager.InteractInput)
-            {
-                if(DogIsHoldingSomething)
-                {
-                    scriptOfHeldObject.Interact(this);
-                }
-                if(InspectedInteractable != null)
-                {
-                    if(InspectedInteractable.TryGetComponent<Interactable>(out Interactable interHolder))
-                    {
-                        interHolder.Interact(this);
-                        if (uiManager.IsInteractablePopUpActive())
-                        {
-                            uiManager.ToggleInteractableTextActivation(false); 
-                            InspectedInteractable = null;        
-                        }
-                    }
-                }
-            };
+    private void Update() {
+        if (GameManager.Instance.CurrentGameState != GameState.Started) return;
+        float delta = Time.deltaTime;
 
-        }
+        HandleRotation(delta);
+        HandleMovement(delta);
+        interactionChecker();
+    }
 
-        private void OnTriggerEnter(Collider other) 
-        {
+    private void interactionChecker() {
+        if (inputManager.InteractInput) {
+            if (DogIsHoldingSomething) {
+                scriptOfHeldObject.Interact(this);
+            }
 
-            if(!DogIsHoldingSomething)
-            {
-                if(other.gameObject.layer == 6) //Checks to see if layer is interactable
-                {
-                    InspectedInteractable = other.gameObject;
-
-                    if (!uiManager.IsInteractablePopUpActive())
-                    {
-                        Interactable interHolder = other.gameObject.GetComponent<Interactable>();
-                        uiManager.ChangeInteractablePopUpContainerText(interHolder.InteractableText);
-                        uiManager.ToggleInteractableTextActivation(true);
+            if (InspectedInteractable != null) {
+                if (InspectedInteractable.TryGetComponent<Interactable>(out Interactable interHolder)) {
+                    interHolder.Interact(this);
+                    if (uiManager.IsInteractablePopUpActive()) {
+                        uiManager.ToggleInteractableTextActivation(false);
+                        InspectedInteractable = null;
                     }
                 }
             }
         }
 
-        private void OnTriggerExit(Collider other)
-        {
-            if(other.gameObject == InspectedInteractable) //Checks to see if layer is interactable
+        ;
+    }
+
+    private void OnTriggerEnter(Collider other) {
+        if (!DogIsHoldingSomething) {
+            if (other.gameObject.layer == 6) //Checks to see if layer is interactable
             {
-                if (uiManager.IsInteractablePopUpActive())
-                {
-                    uiManager.ToggleInteractableTextActivation(false); 
-                    InspectedInteractable = null;        
+                InspectedInteractable = other.gameObject;
+
+                if (!uiManager.IsInteractablePopUpActive()) {
+                    Interactable interHolder = other.gameObject.GetComponent<Interactable>();
+                    uiManager.ChangeInteractablePopUpContainerText(interHolder.InteractableText);
+                    uiManager.ToggleInteractableTextActivation(true);
                 }
             }
-        }
-
-
-        private void HandleMovement(float delta) 
-        {
-            Vector3 movement = Vector3.zero;
-            movement.x = inputManager.MovementInput.x;
-            movement.z = inputManager.MovementInput.y;
-            movement.y = groundedGravity;
-            controller.Move(movement * delta * speed);
-
-            // for now just binary anim switch
-            float anim_val = (Math.Abs(movement.x) < 0.1 && Math.Abs(movement.z) < 0.1)? 0 : 1;
-            //Debug.Log($"Sending {anim_val} to 'walking'");
-            dogAnimator.SetFloat("running", anim_val);
-        }
-
-        private void HandleRotation(float delta) {
-            Vector3 targetDir = Vector3.zero;
-            // targetDir = cameraTransform.forward * inputManager.MovementInput.y*5.882f;
-            targetDir = cameraTransform.forward * inputManager.MovementInput.y;
-            targetDir += cameraTransform.right * inputManager.MovementInput.x;
-            targetDir.Normalize();
-            targetDir.y = 0;
-
-            if (targetDir == Vector3.zero) targetDir = transform.forward;
-
-            Vector3 newDirection = Vector3.RotateTowards(transform.forward,targetDir,rotationSpeed * delta,0f);
-
-            transform.rotation = Quaternion.LookRotation(newDirection);
-
-
-            Debug.DrawRay(transform.position,(4*newDirection)-transform.position,Color.red);
         }
     }
+
+    private void OnTriggerExit(Collider other) {
+        if (other.gameObject == InspectedInteractable) //Checks to see if layer is interactable
+        {
+            if (uiManager.IsInteractablePopUpActive()) {
+                uiManager.ToggleInteractableTextActivation(false);
+                InspectedInteractable = null;
+            }
+        }
+    }
+
+
+    private void HandleMovement(float delta) {
+        Vector3 movement = Vector3.zero;
+        movement.x = inputManager.MovementInput.x;
+        movement.z = inputManager.MovementInput.y;
+        movement.y = groundedGravity;
+        movement.Normalize();
+        controller.Move(movement * delta * speed);
+
+        // for now just binary anim switch
+        float anim_val = (Math.Abs(movement.x) < 0.1 && Math.Abs(movement.z) < 0.1) ? 0 : 1;
+        //Debug.Log($"Sending {anim_val} to 'walking'");
+        dogAnimator.SetFloat("running", anim_val);
+    }
+
+    private void HandleRotation(float delta) {
+        Vector3 targetDir = Vector3.zero;
+        targetDir = cameraTransform.forward * inputManager.MovementInput.y;
+        targetDir += cameraTransform.right * inputManager.MovementInput.x;
+        targetDir.Normalize();
+        targetDir.y = 0;
+
+        if (targetDir == Vector3.zero) targetDir = transform.forward;
+
+        Quaternion lookRotation = Quaternion.LookRotation(targetDir);
+        Quaternion tr = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * delta);
+        transform.rotation = tr;
+        
+        Debug.DrawRay(transform.position, (4 * targetDir) - transform.position, Color.red);
+    }
+}
 }
